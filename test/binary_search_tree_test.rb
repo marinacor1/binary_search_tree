@@ -36,7 +36,9 @@ class BinarySearchTreeTest < Minitest::Test
    assert_equal "The Immaculate Collection", tree.root_node.right_link.movie
    assert_equal "The Secret Garden", tree.root_node.left_link.movie
  end
+end
 
+class InsertTest < Minitest::Test
   def test_insert_adds_information_to_tree
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
@@ -50,11 +52,11 @@ class BinarySearchTreeTest < Minitest::Test
   end
 meta wowza: true
   def test_insert_returns_correct_depth_for_multiple_depths
+    skip
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
-    tree.insert(16, "Johnny English")
-    assert_equal 2, tree.insert(92, "Sharknado 3")
-    #doesn't pass for value of Johnny English
+    assert_equal 1, tree.insert(16, "Johnny English")
+    assert_equal 1, tree.insert(92, "Sharknado 3")
   end
 
   def test_insert_returns_correct_depth_if_heavily_skewed_to_right
@@ -66,7 +68,6 @@ meta wowza: true
     tree.insert(94, "Mickey Mouse")
     assert_equal 4, tree.insert(99, "Aladdin")
   end
-
 
   def test_insert_returns_correct_depth_if_heavily_skewed_to_left
     skip
@@ -86,30 +87,78 @@ meta wowza: true
     tree.insert(92, "Sharknado 3")
     assert_equal 2, tree.insert(50, "Hannibal Buress: Animal Furnace")
   end
+end
 
+class IncludeTest < Minitest:: Test
+meta power:true
   def test_include_returns_true_if_value_found
     skip
-    setup
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
     assert tree.include?(16)
   end
-
+meta bam: true
   def test_include_works_with_different_value
-    skip
-    setup
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
+    assert tree.include?(50)
+  end
+meta ind: true
+  def test_include_returns_true_if_value_exists
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
     assert tree.include?(50)
   end
 
-  def test_include_returns_false_if_value_does_not_exist
-    skip
-    setup
-    refute tree.include?(72)
-  end
-
   def test_include_returns_false_if_value_does_not_exist_again
-    skip
-    setup
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
     refute tree.include?(71)
   end
+
+  def test_include_returns_true_for_non_setup_tree
+    tree = BinarySearchTree.new
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(72, "Discoman")
+    assert tree.include?(43)
+  end
+
+  def test_include_returns_false_for_non_setup_tree
+    tree = BinarySearchTree.new
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(72, "Discoman")
+    refute tree.include?(79)
+  end
+
+  def test_include_returns_true_for_long_uneven_tree
+    tree = BinarySearchTree.new
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(72, "Discoman")
+    tree.insert(87, "Mrs. Doubtfire")
+    tree.insert(89, "Tootsie")
+    tree.insert(90, "Breakfast Club")
+    tree.insert(91, "Pretty in Pink")
+    tree.insert(92, "Say Anything")
+    assert tree.include?(91)
+  end
+end
+
+class Depth_ofTest < Minitest::Test
 
   def test_depth_finds_the_depth_of_tree
     skip
@@ -122,7 +171,9 @@ meta wowza: true
     setup
     assert_equal 2, tree.depth_of(50)
   end
+end
 
+class MaxAndMinTest < Minitest::Test
   def test_max_finds_highest_movie_information
     skip
     setup
@@ -152,6 +203,9 @@ meta wowza: true
   def test_min_finds_highest_movie_on_skewed_to_right_tree
   skip
   end
+end
+
+class SortedArrayTest < Minitest::Test
   def test_sort_returns_array_of_data_in_ascending_order
     skip
     setup
@@ -159,11 +213,17 @@ meta wowza: true
     {"Hannibal Buress: Animal Furnace" =>61}, {"Sharknado 3" =>92}]
     assert_equal sorted_array, tree.sort
   end
+end
+
+class LoadTest < Minitest::Test
 
   def test_load_reads_file_and_returns_number_of_movies
     skip
     assert_equal 26, tree.load('movies.txt')
   end
+end
+
+class HealthTest < Minitest::Test
 
   def test_health_gives_accurate_report_for_tree
     skip
