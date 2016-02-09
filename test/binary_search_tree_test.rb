@@ -58,7 +58,7 @@ meta wowza: true
     #doesn't pass for value of Johnny English
   end
 
-  def test_insert_returns_correct_depth_if_heavily_skewed
+  def test_insert_returns_correct_depth_if_heavily_skewed_to_right
     skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
@@ -66,6 +66,17 @@ meta wowza: true
     tree.insert(92, "Selena")
     tree.insert(94, "Mickey Mouse")
     assert_equal 4, tree.insert(99, "Aladdin")
+  end
+
+
+  def test_insert_returns_correct_depth_if_heavily_skewed_to_left
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(95, "Bill & Ted's Excellent Adventure")
+    tree.insert(93, "Titanic")
+    tree.insert(92, "Selena")
+    tree.insert(90, "Mickey Mouse")
+    assert_equal 4, tree.insert(89, "Aladdin")
   end
 
   def test_insert_adds_node_to_right_if_higher
