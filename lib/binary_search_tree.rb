@@ -13,15 +13,33 @@ class BinarySearchTree
   #     @head = Node.new(score, movie)
   #
 
-  def insert(score, movie)
+  def insert(score, movie, node = @root_node)
+    # binding.pry
+    left_row = 0
+    right_row = 0
     current_node = Node.new(score, movie)
-    if @root_node.nil?
-      @root_node = current_node
-    elsif score < root_node
-      root_node.left_link = current_node
-    elsif score > root_node
-      root_node.right_link = current_node
+    if node.nil?
+      @root_node = Node.new(score, movie)
+    elsif score < node.score
+      left_row +=1
+      node.left_link = current_node
+      insert(score, movie, node.left_link)
+    elsif score > node.score
+      right_row +=1
+      node.right_link = current_node
+      insert(score, movie, node.right_link)
     end
+    # binding.pry
+    if left_row == 0  && right_row == 0
+      depth = 0
+    else
+      if left_row < right_row
+        depth = right_row + 1
+      else
+        depth = left_row + 1
+      end
+    end
+    depth
   end
 
   #i'm taking notes:

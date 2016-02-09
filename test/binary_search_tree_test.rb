@@ -3,13 +3,14 @@ require 'minitest/pride'
 require_relative '../lib/binary_search_tree'
 
 class BinarySearchTreeTest < Minitest::Test
-  def setup
-  tree = BinarySearchTree.new
-  tree.insert(61, "Bill & Ted's Excellent Adventure")
-  tree.insert(16, "Johnny English")
-  tree.insert(92, "Sharknado 3")
-  tree.insert(50, "Hannibal Buress: Animal Furnace")
-  end
+  # def setup
+  #   skip
+  # tree = BinarySearchTree.new
+  # tree.insert(61, "Bill & Ted's Excellent Adventure")
+  # tree.insert(16, "Johnny English")
+  # tree.insert(92, "Sharknado 3")
+  # tree.insert(50, "Hannibal Buress: Animal Furnace")
+  # end
 
   def test_tree_is_instance_of_bst_class
     tree = BinarySearchTree.new
@@ -23,62 +24,40 @@ class BinarySearchTreeTest < Minitest::Test
 
   def test_root_node_has_no_right_or_left_link
     tree = BinarySearchTree.new
-    tree.insert(8, "the fonz")
+    tree.insert(8, "The Fonz")
     assert_equal nil, tree.root_node.right_link
     assert_equal nil, tree.root_node.left_link
   end
 
   def test_root_node_has_current_right_and_left_links
-   skip
    tree = BinarySearchTree.new
    tree.insert(8, "The Fonz")
    tree.insert(4, "The Secret Garden")
    tree.insert(16, "The Immaculate Collection")
-   assert_equal "The Immaculate Collection", tree.root_node.right_link.key
-   assert_equal "The Secret Garden", tree.root_node.left_link.key
+   assert_equal "The Immaculate Collection", tree.root_node.right_link.movie
+   assert_equal "The Secret Garden", tree.root_node.left_link.movie
  end
 
   def test_insert_adds_information_to_tree
-    skip
     tree = BinarySearchTree.new
-    tree.insert(8, "the fonz")
-    assert_equal "the fonz", tree.root_node.key
-    assert_equal 8, tree.root_node.value
-  end
-
-  def test_insert_adds_node_with_data
-    skip
-    tree = BinarySearchTree.new
-    assert_equal 0, tree.length
-    tree.insert(61, "Bill & Ted's Excellent Adventure")
-    assert_equal 1, tree.length
+    tree.insert(8, "The Fonz")
+    assert_equal "The Fonz", tree.root_node.movie
+    assert_equal 8, tree.root_node.score
   end
 
   def test_insert_returns_depth_of_new_node
-    skip
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
   end
 
-  def test_insert_adds_node_to_non_empty_tree
-    skip
-    tree = BinarySearchTree.new
-    tree.insert(61, "Bill & Ted's Excellent Adventure")
-    assert_equal 1, tree.length
-    tree.insert(16, "Johnny English")
-    assert_equal 2, tree.length
-  end
-
-  def test_insert_adds_node_to_left_if_lower
-    skip
+  def test_insert_returns_correct_depth
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
-    assert_equal 1, tree.insert(92, "Sharknado 3")
+    assert_equal 2, tree.insert(92, "Sharknado 3")
   end
 
   def test_insert_adds_node_to_right_if_higher
-    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
