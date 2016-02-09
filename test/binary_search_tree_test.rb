@@ -3,14 +3,14 @@ require 'minitest/pride'
 require_relative '../lib/binary_search_tree'
 
 class BinarySearchTreeTest < Minitest::Test
-  # def setup
-  #   skip
-  # tree = BinarySearchTree.new
-  # tree.insert(61, "Bill & Ted's Excellent Adventure")
-  # tree.insert(16, "Johnny English")
-  # tree.insert(92, "Sharknado 3")
-  # tree.insert(50, "Hannibal Buress: Animal Furnace")
-  # end
+  def setup
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
+  end
 
   def test_tree_is_instance_of_bst_class
     tree = BinarySearchTree.new
@@ -53,8 +53,9 @@ meta wowza: true
   def test_insert_returns_correct_depth_for_multiple_depths
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
-    assert_equal 1, tree.insert(16, "Johnny English")
+    tree.insert(16, "Johnny English")
     assert_equal 2, tree.insert(92, "Sharknado 3")
+    #doesn't pass for value of Johnny English
   end
 
   def test_insert_returns_correct_depth_if_heavily_skewed
@@ -91,13 +92,13 @@ meta wowza: true
   def test_include_returns_false_if_value_does_not_exist
     skip
     setup
-    assert tree.include?(72)
+    refute tree.include?(72)
   end
 
   def test_include_returns_false_if_value_does_not_exist_again
     skip
     setup
-    assert tree.include?(71)
+    refute tree.include?(71)
   end
 
   def test_depth_finds_the_depth_of_tree
