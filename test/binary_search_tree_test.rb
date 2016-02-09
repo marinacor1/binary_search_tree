@@ -4,7 +4,6 @@ require_relative '../lib/binary_search_tree'
 
 class BinarySearchTreeTest < Minitest::Test
   def setup
-    skip
   tree = BinarySearchTree.new
   tree.insert(61, "Bill & Ted's Excellent Adventure")
   tree.insert(16, "Johnny English")
@@ -15,6 +14,36 @@ class BinarySearchTreeTest < Minitest::Test
   def test_tree_is_instance_of_bst_class
     tree = BinarySearchTree.new
     assert tree.instance_of? BinarySearchTree
+  end
+
+  def test_tree_is_empty_initially
+    tree = BinarySearchTree.new
+    assert_equal nil, tree.root_node
+  end
+
+  def test_root_node_has_no_right_or_left_link
+    tree = BinarySearchTree.new
+    tree.insert(8, "the fonz")
+    assert_equal nil, tree.root_node.right_link
+    assert_equal nil, tree.root_node.left_link
+  end
+
+  def test_root_node_has_current_right_and_left_links
+   skip
+   tree = BinarySearchTree.new
+   tree.insert(8, "The Fonz")
+   tree.insert(4, "The Secret Garden")
+   tree.insert(16, "The Immaculate Collection")
+   assert_equal "The Immaculate Collection", tree.root_node.right_link.key
+   assert_equal "The Secret Garden", tree.root_node.left_link.key
+ end
+
+  def test_insert_adds_information_to_tree
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(8, "the fonz")
+    assert_equal "the fonz", tree.root_node.key
+    assert_equal 8, tree.root_node.value
   end
 
   def test_insert_adds_node_with_data
