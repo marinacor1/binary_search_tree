@@ -48,15 +48,15 @@ class BinarySearchTreeTest < Minitest::Test
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
   end
-meta wowza: true
+meta beta: true
   def test_insert_returns_correct_depth_for_multiple_depths
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
-    tree.insert(16, "Johnny English")
-    assert_equal 2, tree.insert(92, "Sharknado 3")
+    assert_equal 1, tree.insert(16, "Johnny English")
+    assert_equal 1, tree.insert(92, "Sharknado 3")
     #doesn't pass for value of Johnny English
   end
-
+meta bow: true
   def test_insert_returns_correct_depth_if_heavily_skewed_to_right
     skip
     tree = BinarySearchTree.new
