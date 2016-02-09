@@ -57,6 +57,18 @@ class BinarySearchTree
     end
   end
 
+  def depth_of(score)
+
+  end
+
+  def max
+    #follows right leg until it's linked to nil, reads that score
+  end
+
+  def min
+    #follows left leg until it's linked to nil, reads that score
+
+  end
      #if root_node.left_link = nil
       #root_node.left_link = current_node
       #elsif current_node < root_node

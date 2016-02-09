@@ -4,7 +4,6 @@ require_relative '../lib/binary_search_tree'
 
 class BinarySearchTreeTest < Minitest::Test
   def setup
-    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
@@ -131,6 +130,14 @@ meta wowza: true
     assert_equal hash, tree.max
   end
 
+  def test_max_finds_highest_movie_on_skewed_to_left_tree
+    skip
+  end
+
+  def test_max_finds_highest_movie_on_skewed_to_right_tree
+    skip
+  end
+
   def test_min_finds_lowest_movie_information
     skip
     setup
@@ -138,6 +145,13 @@ meta wowza: true
     assert_equal hash, tree.min
   end
 
+  def test_min_finds_highest_movie_on_skewed_to_left_tree
+    skip
+  end
+
+  def test_min_finds_highest_movie_on_skewed_to_right_tree
+  skip
+  end
   def test_sort_returns_array_of_data_in_ascending_order
     skip
     setup
