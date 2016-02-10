@@ -69,15 +69,31 @@ meta left: true
     tree.insert(49, "Addams Family")
     assert_equal "Addams Family", tree.root_node.left_link.right_link.movie
   end
-end
-
-class InsertTest < Minitest::Test
+  meta booger: true
   def test_insert_adds_information_to_tree
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
     assert_equal "The Fonz", tree.root_node.movie
     assert_equal 8, tree.root_node.score
   end
+meta wawa: true
+  def test_depth_exists
+    tree = BinarySearchTree.new
+    tree.insert(8, "The Fonz")
+    assert_equal 0, tree.root_node.depth
+  end
+meta ly: true
+  def test_depth_exists_with_more_than_one_node
+    tree = BinarySearchTree.new
+    tree.insert(8, "The Fonz")
+    tree.insert(16, "Friends")
+    assert_equal 1, tree.root_node.right_link.depth
+  end
+
+end
+
+class InsertTest < Minitest::Test
+
 meta billy: true
   def test_insert_returns_depth_of_new_node
     skip
@@ -276,7 +292,7 @@ meta max: true
     hash = {"Say Anything" => 92}
     assert_equal hash, tree.max
   end
-meta min: true 
+meta min: true
   def test_min_finds_lowest_movie_information
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
