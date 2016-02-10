@@ -249,6 +249,7 @@ class Depth_ofTest < Minitest::Test
   end
 
   def test_depth_finds_the_depth_of_tree
+    skip 
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")

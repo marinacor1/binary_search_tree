@@ -21,13 +21,13 @@ class BinarySearchTree
       node.depth +=1
       insert(score, movie, node.left_link)
     elsif score < node.score && node.left_link.nil?
-      node.depth += 1
+      node.depth += 2
       node.left_link = current_node
     elsif score > node.score && node.right_link
       node.depth += 1
       insert(score, movie, node.right_link)
     else score > node.score && node.right_link.nil?
-      node.depth += 1
+      node.depth += 2
       node.right_link = current_node
     end
   end
