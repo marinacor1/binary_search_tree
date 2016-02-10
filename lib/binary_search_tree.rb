@@ -1,6 +1,5 @@
 require 'pry'
 require_relative 'node'
-require_relative 'file_reader'
 
 class BinarySearchTree
   attr_accessor :root_node, :left_count, :right_count, :max_node
@@ -43,7 +42,6 @@ class BinarySearchTree
         @depth_counter =  @left_counter
       end
       @depth_counter + 1
-      node.depth += 1
   end
 
   def include?(value, node = @root_node)
