@@ -19,7 +19,6 @@ class BinarySearchTree
     current_node = Node.new(score, movie)
     if node.nil?
       @root_node = Node.new(score, movie)
-      #for test depth, currently breaking because @root_node only has Bill & Teds
     elsif score < node.score && node.left_link
       @left_counter +=1
       insert(score, movie, node.left_link)
@@ -30,7 +29,6 @@ class BinarySearchTree
       insert(score, movie, node.right_link)
     else score > node.score && node.right_link.nil?
       node.right_link = current_node
-
     end
       if @left_counter > @right_counter
       @depth_counter = @right_counter
@@ -38,24 +36,7 @@ class BinarySearchTree
         @depth_counter =  @left_counter
       end
       @depth_counter + 1
-      # depth(@root_node)
   end
-
-  # def depth(node)
-  #   binding.pry
-  #   if node.nil?
-  #     @depth_counter = nil
-  #   elsif node.right_link.nil? && node.left_link.nil?
-  #     @depth_counter
-  #   elsif node.right_link
-  #     @right_counter +=1
-  #     depth(node.right_link)
-  #   elsif node.left_link
-  #     @left_counter +=1
-  #     depth(node.left_link)
-  #   end
-  #   @depth_counter
-  # end
 
   def include?(value, node = @root_node)
     if node.nil?
@@ -102,7 +83,5 @@ class BinarySearchTree
   def min
     #follows left leg until it's linked to nil, reads that score
   end
-     #if root_node.left_link = nil
-      #root_node.left_link = current_node
-      #elsif current_node < root_node
+
 end
