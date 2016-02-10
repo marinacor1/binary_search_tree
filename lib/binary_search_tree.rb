@@ -12,24 +12,24 @@ class BinarySearchTree
   end
 
   def insert(score, movie, node = @root_node)
+    # binding.pry
     current_node = Node.new(score, movie)
     if node.nil?
       @root_node = Node.new(score, movie)
     elsif score < node.score && node.left_link
-      @left_count +=1
+      current_node.depth +=1
       insert(score, movie, node.left_link)
     elsif score < node.score && node.left_link.nil?
-      @left_count +=1
+      current_node.depth +=1
       node.left_link = current_node
     elsif score > node.score && node.right_link
-      @right_count +=1
+      current_node.depth +=1
       insert(score, movie, node.right_link)
     else score > node.score && node.right_link.nil?
-      @right_count +=1
+      current_node.depth +=1
       node.right_link = current_node
     end
-    depth(@left_count, @right_count)
-    # depth_of(score)
+    current_node.depth
   end
   # max(left_count+1,right_count+1)
 
@@ -81,18 +81,6 @@ class BinarySearchTree
      end
      depth
   end
-
-  def include?(value, first_node_of_list)
-    if value == @root_node.score
-      true
-    elsif @root_node.nil?
-      false
-    else
-      include?(value, first_node_of_list.link)
-      #passes in node to next smallest
-    end
-  end
-
 
   def depth_of(score)
 

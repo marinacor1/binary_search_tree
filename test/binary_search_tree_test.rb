@@ -84,8 +84,16 @@ class InsertTest < Minitest::Test
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
   end
 
+meta depth: true
+
+  def test_insert_works_with_two_nodes
+    tree = BinarySearchTree.new
+    assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
+    assert_equal 1, tree.insert(16, "Johnny English")
+  end
+
+  meta boom: true
   def test_insert_returns_correct_depth_for_multiple_depths
-    skip
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, tree.insert(16, "Johnny English")
@@ -93,7 +101,6 @@ class InsertTest < Minitest::Test
   end
 meta bow: true
   def test_insert_returns_correct_depth_if_heavily_skewed_to_right
-    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(63, "Titanic")
@@ -227,6 +234,7 @@ meta nilly: true
   end
 meta max: true
   def test_max_finds_highest_movie_information
+    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
