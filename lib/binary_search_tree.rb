@@ -115,7 +115,7 @@ class BinarySearchTree
         movies << title
         score = title.split(",")[0].to_i
         movie = title.split(",")[1].chomp
-        title.insert(score, movie)
+        insert(score, movie)
       end
      movies.length
     end

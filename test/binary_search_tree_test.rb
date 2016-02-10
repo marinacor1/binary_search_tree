@@ -518,10 +518,11 @@ meta load:true
     assert_equal 100, tree.load("movies.txt")
   end
 meta arma: true
-  def test_load_reads_file_and_returns_number_of_movies
+  def test_load_reads_file_and_creates_tree
     tree = BinarySearchTree.new
     assert_equal 100, tree.load("movies.txt")
-    assert_equal "Hannibal Buress: Animal Furnace", tree.root_node.movie  
+    assert_equal " Hannibal Buress: Animal Furnace", tree.root_node.movie
+    assert_equal " Hannibal Buress: Comedy Camisado", tree.root_node.right_link.movie
   end
 end
 
