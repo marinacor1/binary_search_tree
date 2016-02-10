@@ -243,15 +243,27 @@ end
 
 class Depth_ofTest < Minitest::Test
 
+  def test_depth_of_returns_nil_if_tree_empty
+    tree = BinarySearchTree.new
+    assert_equal nil, tree.depth_of(nil)
+  end
+
   def test_depth_finds_the_depth_of_tree
-    skip
-    setup
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
     assert_equal 1, tree.depth_of(92)
   end
 
   def test_depth_works_with_deeper_node
     skip
-    setup
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
     assert_equal 2, tree.depth_of(50)
   end
 end
@@ -303,7 +315,7 @@ meta max: true
   end
 meta min: true
   def test_min_finds_lowest_movie_information
-    skip 
+    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
@@ -335,7 +347,7 @@ end
 class LoadTest < Minitest::Test
 
   def test_load_reads_file_and_returns_number_of_movies
-    skip
+    tree = BinarySearchTree.new 
     assert_equal 26, tree.load('movies.txt')
   end
 end
