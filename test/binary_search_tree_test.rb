@@ -427,8 +427,8 @@ end
 
 class LoadTest < Minitest::Test
 
+meta load:true 
   def test_load_reads_file_and_returns_number_of_movies
-    skip
     tree = BinarySearchTree.new
     assert_equal 26, tree.load("movies.txt")
   end

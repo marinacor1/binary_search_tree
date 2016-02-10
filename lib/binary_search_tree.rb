@@ -1,5 +1,6 @@
 require 'pry'
 require_relative 'node'
+require_relative 'movies.txt'
 
 class BinarySearchTree
   attr_accessor :root_node, :left_count, :right_count, :max_node
