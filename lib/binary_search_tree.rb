@@ -137,21 +137,22 @@ class BinarySearchTree
   end
 
   def health(depth)
-    health_info = []
     stats = []
-    # binding.pry
-    # if @root_node.depth == depth
+    stats << [score(depth), children_nodes, percent_children]
+  end
+
+  def score(depth, node = @root_node)
     if @root_node.nil?
-      score = nil
-    else
-      score = self.root_node.score
+      node = @root_node
     end
-    # @movie_collection.each do |hash|
-      stats << score
-      stats << children_nodes
-      stats << percent_children
-    # end
-    health_info << stats
+    if depth == node.depth
+      node.score #is this going to come up?
+    elsif depth < node.depth
+      node.score = nil
+    else depth > node.depth
+      score(depth, node.right_link)
+      score(depth, node.left.link) #where do these go?
+    end
   end
 
   def children_nodes
