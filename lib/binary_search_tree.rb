@@ -16,6 +16,8 @@ class BinarySearchTree
   end
 
   def insert(score, movie, node = @root_node, previous_depth = @previous_depth )
+    @score = score
+    @movie = movie
     current_node = Node.new(score, movie)
     if node.nil?
       @root_node = Node.new(score, movie)
@@ -115,6 +117,13 @@ class BinarySearchTree
       end
     num
     end
+  end
+
+  def sort(score = 0, movie = nil)
+    sorted = []
+    stats = {}
+    stats[movie] = score
+    sorted << stats
   end
 
 

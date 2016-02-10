@@ -446,11 +446,58 @@ meta min: true
 end
 
 class SortedArrayTest < Minitest::Test
+
+  def test_sort_returns_emptyish_array_for_nil_tree
+    tree = BinarySearchTree.new
+    emptyish_array = [{nil => 0}]
+    assert_equal emptyish_array, tree.sort
+  end
+meta sort: true
+  def test_sort_returns_correct_array_for_single_tree
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(92, "Say Anything")
+    array = [{"Say Anything" => 92}]
+    assert_equal array, tree.sort
+  end
+
+  def test_sort_returns_correct_array_for_two_node_tree
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(90, "Breakfast Club")
+    tree.insert(91, "Pretty in Pink")
+    array = [{"Breakfast Club" => 90}, {"Pretty in Pink" => 91}]
+    assert_equal array, tree.sort
+  end
   def test_sort_returns_array_of_data_in_ascending_order
     skip
-    setup
+    tree = BinarySearchTree.new
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
     sorted_array = [{"Johnny English" =>16},
     {"Hannibal Buress: Animal Furnace" =>61}, {"Sharknado 3" =>92}]
+    assert_equal sorted_array, tree.sort
+  end
+
+
+  def test_sort_returns_array_with_long_tree
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(90, "Breakfast Club")
+    tree.insert(8, "Mystic Pizza")
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(92, "Say Anything")
+    tree.insert(19, "Sisterhood of the Travel")
+    tree.insert(9, "Ski School")
+    tree.insert(11, "Ski School 2")
+    tree.insert(2, "Beauty and the Beast")
+    tree.insert(91, "Pretty in Pink")
+    tree.insert(23, "Wizards")
+    tree.insert(7, "Citizen Kane")
+    tree.insert(1, "Chocolat")
+    sorted_array = [{"Chocolat" => 1}, {"Beauty and the Beast" => 2}, {"Citizen Kane" => 7}, {"Mystic Pizza" => 8}, {"Ski School" => 9}, {"Ski School 2" => 11}, {"Sisterhood of the Travel" => 19}, {"Wizards" => 23}, {"Milk" => 43}, {"Walking on a Cloud" => 50}, {"Breakfast Club" => 90} ]
     assert_equal sorted_array, tree.sort
   end
 end
