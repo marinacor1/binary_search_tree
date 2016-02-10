@@ -12,27 +12,29 @@ class BinarySearchTree
     @max_node = 0
     @min_node = 0
     @last_depth = 0
+    @previous_depth = 0
   end
 
   def insert(score, movie, node = @root_node, previous_depth = @previous_depth )
     current_node = Node.new(score, movie)
     if node.nil?
       @root_node = Node.new(score, movie)
+      current_node.depth = 0
     elsif score < node.score && node.left_link
-      current_node.depth = (@previous_depth +=1)
-      @previous_depth = current_node.depth
+      current_node.depth = (previous_depth +=1)
+      previous_depth = current_node.depth
       insert(score, movie, node.left_link, current_node.depth)
     elsif score < node.score && node.left_link.nil?
-      current_node.depth = (@previous_depth += 1)
-      @previous_depth = current_node.depth
+      current_node.depth = (previous_depth += 1)
+      previous_depth = current_node.depth
       node.left_link = current_node
     elsif score > node.score && node.right_link
-      current_node.depth = (@previous_depth += 1)
-      @previous_depth = current_node.depth
+      current_node.depth = (previous_depth += 1)
+      previous_depth = current_node.depth
       insert(score, movie, node.right_link, current_node.depth)
     else score > node.score && node.right_link.nil?
-      current_node.depth = (@previous_depth += 1)
-      @previous_depth = current_node.depth
+      current_node.depth = (previous_depth += 1)
+      previous_depth = current_node.depth
       node.right_link = current_node
     end
     current_node.depth
