@@ -91,6 +91,7 @@ meta ly: true
   end
 meta wa: true
   def test_depth_works_with_longer_trees
+    skip
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
     tree.insert(16, "Friends")
@@ -302,6 +303,7 @@ meta max: true
   end
 meta min: true
   def test_min_finds_lowest_movie_information
+    skip 
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
