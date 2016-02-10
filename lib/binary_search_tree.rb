@@ -109,12 +109,15 @@ class BinarySearchTree
   end
 
   def load(file)
-    num = 0
+    movies = []
     File.open("./lib/movies.txt", "r") do |movie|
-      movie.each_line do |num|
-        num +=1
+      movie.each_line do |title|
+        movies << title
+        score = title.split(",")[0].to_i
+        movie = title.split(",")[1].chomp
+        title.insert(score, movie)
       end
-    num
+     movies.length
     end
   end
 
