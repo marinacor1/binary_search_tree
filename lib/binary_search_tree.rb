@@ -55,21 +55,44 @@ class BinarySearchTree
 
   end
 
+  # def depth(root_node)
+  #   if root.nil?
+  #     max_depth = -1
+  #   else
+  #     left_depth = depth(root_node, left_count)
+  #     right_depth = depth(root_node, right_count)
+  #     max_depth = (left_depth, right_depth) + 1
+  #     #what does line 38 do? are we trying to find the sum, the average, the largest of the two, the smallest of the two?
+  #   end
+  # end
+
   def depth(left_count, right_count)
     if @root_node.nil?
-      depth = -1
+      depth = 0
     end
     if left_count == 0  && right_count == 0
-      depth = 0
+      depth = -1
     else
       if left_count < right_count
-        depth = right_count + 1
+        depth = right_count +1
       else
         depth = left_count + 1
        end
      end
      depth
-   end
+  end
+
+  def include?(value, first_node_of_list)
+    if value == @root_node.score
+      true
+    elsif @root_node.nil?
+      false
+    else
+      include?(value, first_node_of_list.link)
+      #passes in node to next smallest
+    end
+  end
+
 
   def depth_of(score)
 

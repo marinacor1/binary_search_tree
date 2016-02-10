@@ -91,7 +91,7 @@ class InsertTest < Minitest::Test
     assert_equal 1, tree.insert(16, "Johnny English")
     assert_equal 1, tree.insert(92, "Sharknado 3")
   end
-
+meta bow: true
   def test_insert_returns_correct_depth_if_heavily_skewed_to_right
     skip
     tree = BinarySearchTree.new
