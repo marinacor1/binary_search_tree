@@ -9,9 +9,6 @@ class BinarySearchTree
     @left_count = 0
     @right_count = 0
     @max_node = 0
-    @depth_counter = 0
-    @left_counter = 0
-    @right_counter = 0
   end
 
   def insert(score, movie, node = @root_node)
@@ -19,26 +16,20 @@ class BinarySearchTree
     current_node = Node.new(score, movie)
     if node.nil?
       @root_node = Node.new(score, movie)
-      #for test depth, currently breaking because @root_node only has Bill & Teds
     elsif score < node.score && node.left_link
-      @left_counter +=1
+      node.depth +=1
       insert(score, movie, node.left_link)
     elsif score < node.score && node.left_link.nil?
       node.left_link = current_node
+      node.depth +=1
     elsif score > node.score && node.right_link
-      @right_counter += 1
+      node.depth += 1
       insert(score, movie, node.right_link)
     else score > node.score && node.right_link.nil?
       node.right_link = current_node
-
+      node.depth += 1
     end
-      if @left_counter > @right_counter
-      @depth_counter = @right_counter
-      else
-        @depth_counter =  @left_counter
-      end
-      @depth_counter + 1
-      # depth(@root_node)
+      node.depth
   end
 
   # def depth(node)
@@ -76,7 +67,6 @@ class BinarySearchTree
     else
       false
     end
-
   end
 
   def depth_of(score)

@@ -13,4 +13,8 @@ class Node
      #left_link = nil, maybe just lowest num in that particular chain, but take all left_link = nil and compare them to see smallest num
   end
 
+  def depth
+    @depth
+  end
+
 end
