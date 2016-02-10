@@ -126,13 +126,16 @@ class BinarySearchTree
   end
 
   def sort
-    # binding.pry
     sorted_array = @movie_collection.sort_by do |hash|
       hash.map do |k, v|
         v
       end
     end
     sorted_array.uniq
+  end
+
+  def health
+
   end
 
 
