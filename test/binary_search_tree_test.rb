@@ -374,7 +374,7 @@ meta max: true
   end
 meta min: true
   def test_min_finds_lowest_movie_information
-    skip
+    # skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
@@ -427,8 +427,9 @@ end
 
 class LoadTest < Minitest::Test
 
-meta load:true 
+meta load:true
   def test_load_reads_file_and_returns_number_of_movies
+    skip
     tree = BinarySearchTree.new
     assert_equal 26, tree.load("movies.txt")
   end

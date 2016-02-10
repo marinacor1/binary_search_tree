@@ -1,6 +1,6 @@
 require 'pry'
 require_relative 'node'
-require_relative 'movies.txt'
+# require_relative 'movies.txt'
 
 class BinarySearchTree
   attr_accessor :root_node, :left_count, :right_count, :max_node
@@ -89,17 +89,17 @@ class BinarySearchTree
   def min(node = @root_node)
     minimum = {}
     if node.nil?
-      nil
+      @min_node  = nil
     elsif node.score > @min_node
       @min_node
     elsif node.score < @min_node && node.left_link
       @min_node = node.score
-      min(node.right_link)
+      min(node.left_link)
     elsif node.score < @min_node && node.left_link.nil?
       @min_node = node.score
       @min_movie = node.movie
     end
-    minimum[@min_movie] = @min_mode
+    minimum[@min_movie] = @min_node
     minimum
   end
 
