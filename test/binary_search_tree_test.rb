@@ -87,6 +87,7 @@ class InsertTest < Minitest::Test
 meta depth: true
 
   def test_insert_works_with_two_nodes
+    skip
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, tree.insert(16, "Johnny English")
@@ -94,6 +95,7 @@ meta depth: true
 
   meta boom: true
   def test_insert_returns_correct_depth_for_multiple_depths
+    skip
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, tree.insert(16, "Johnny English")
@@ -101,6 +103,7 @@ meta depth: true
   end
 meta bow: true
   def test_insert_returns_correct_depth_if_heavily_skewed_to_right
+    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(63, "Titanic")
@@ -119,8 +122,9 @@ meta bow: true
     assert_equal 4, tree.insert(89, "Aladdin")
   end
 
+meta shark: true
   def test_insert_adds_node_to_right_if_higher
-    skip
+    skip 
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")

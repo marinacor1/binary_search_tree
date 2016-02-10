@@ -9,6 +9,9 @@ class BinarySearchTree
     @left_count = 0
     @right_count = 0
     @max_node = 0
+    @depth_counter = 0
+    @left_counter = 0
+    @right_counter = 0
   end
 
   def insert(score, movie, node = @root_node)
@@ -17,21 +20,16 @@ class BinarySearchTree
     if node.nil?
       @root_node = Node.new(score, movie)
     elsif score < node.score && node.left_link
-      current_node.depth +=1
       insert(score, movie, node.left_link)
     elsif score < node.score && node.left_link.nil?
-      current_node.depth +=1
       node.left_link = current_node
     elsif score > node.score && node.right_link
-      current_node.depth +=1
       insert(score, movie, node.right_link)
     else score > node.score && node.right_link.nil?
-      current_node.depth +=1
       node.right_link = current_node
     end
-    current_node.depth
+      depth
   end
-  # max(left_count+1,right_count+1)
 
   def include?(value, node = @root_node)
     if node.nil?
@@ -55,31 +53,19 @@ class BinarySearchTree
 
   end
 
-  # def depth(root_node)
-  #   if root.nil?
-  #     max_depth = -1
-  #   else
-  #     left_depth = depth(root_node, left_count)
-  #     right_depth = depth(root_node, right_count)
-  #     max_depth = (left_depth, right_depth) + 1
-  #     #what does line 38 do? are we trying to find the sum, the average, the largest of the two, the smallest of the two?
-  #   end
-  # end
-
-  def depth(left_count, right_count)
-    if @root_node.nil?
-      depth = 0
+  def depth(node = @root_node)
+    if node.nil?
+      @depth_counter = nil
+    elsif node.right_link.nil? && node.left_link.nil?
+      @depth_counter # = gives info about left or right counter
+    elsif node.right_link
+      @right_counter +=1
+      depth(node.right_link)
+    elsif node. left_link
+      @left_counter +=1
+      depth(node.left_link)
     end
-    if left_count == 0  && right_count == 0
-      depth = -1
-    else
-      if left_count < right_count
-        depth = right_count +1
-      else
-        depth = left_count + 1
-       end
-     end
-     depth
+    @depth_counter
   end
 
   def depth_of(score)
