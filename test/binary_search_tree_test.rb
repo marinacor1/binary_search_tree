@@ -161,7 +161,7 @@ meta bean: true
   end
 meta bow: true
   def test_insert_returns_correct_depth_if_heavily_skewed_to_right
-    skip 
+    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(63, "Titanic")
@@ -302,7 +302,6 @@ meta bst: true
   end
 
   def test_depth_works_with_deeper_node
-    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
@@ -312,7 +311,6 @@ meta bst: true
   end
 
   def test_depth_of_works_with_skewed_to_right_trees
-    skip
     tree = BinarySearchTree.new
     tree.insert(50, "Walking on a Cloud")
     tree.insert(43, "Milk")
@@ -325,7 +323,6 @@ meta bst: true
   end
 
   def test_depth_of_works_with_skewed_to_left_trees
-    skip
     tree = BinarySearchTree.new
     tree.insert(90, "Walking on a Cloud")
     tree.insert(83, "Milk")
