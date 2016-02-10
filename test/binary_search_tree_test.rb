@@ -78,7 +78,7 @@ class InsertTest < Minitest::Test
     assert_equal "The Fonz", tree.root_node.movie
     assert_equal 8, tree.root_node.score
   end
-
+meta billy: true
   def test_insert_returns_depth_of_new_node
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
@@ -87,7 +87,6 @@ class InsertTest < Minitest::Test
 meta depth: true
 
   def test_insert_works_with_two_nodes
-    skip
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, tree.insert(16, "Johnny English")
@@ -124,7 +123,7 @@ meta bow: true
 
 meta shark: true
   def test_insert_adds_node_to_right_if_higher
-    skip 
+    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
