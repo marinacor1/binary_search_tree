@@ -511,7 +511,7 @@ meta sort: true
     tree.insert(23, "Wizards")
     tree.insert(7, "Citizen Kane")
     tree.insert(1, "Chocolat")
-    sorted_array = [{"Chocolat" => 1}, {"Beauty and the Beast" => 2}, {"Citizen Kane" => 7}, {"Mystic Pizza" => 8}, {"Ski School" => 9}, {"Ski School 2" => 11}, {"Sisterhood of the Travel" => 19}, {"Wizards" => 23}, {"Milk" => 43}, {"Walking on a Cloud" => 50}, {"Breakfast Club" => 90} ]
+    sorted_array = [{"Chocolat" => 1}, {"Beauty and the Beast" => 2}, {"Citizen Kane" => 7}, {"Mystic Pizza" => 8}, {"Ski School" => 9}, {"Ski School 2" => 11}, {"Sisterhood of the Travel" => 19}, {"Wizards" => 23}, {"Milk" => 43}, {"Walking on a Cloud" => 50}, {"Breakfast Club" => 90}, {"Pretty in Pink" => 91}, {"Say Anything" => 92} ]
     assert_equal sorted_array, tree.sort
   end
 end
