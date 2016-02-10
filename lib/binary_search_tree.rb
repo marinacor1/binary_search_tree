@@ -119,10 +119,10 @@ class BinarySearchTree
     end
   end
 
-  def sort(score = 0, movie = nil)
+  def sort
     sorted = []
     stats = {}
-    stats[movie] = score
+    stats[@movie] = @score
     sorted << stats
   end
 
