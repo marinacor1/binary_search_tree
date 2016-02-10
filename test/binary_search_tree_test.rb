@@ -476,12 +476,20 @@ meta sort: true
     assert_equal array, tree.sort
   end
 
+  def test_sort_with_three_nodes
+    tree = BinarySearchTree.new
+    tree.insert(90, "Breakfast Club")
+    tree.insert(9, "Big Fish")
+    tree.insert(14, "Spice World")
+    array = [{"Big Fish" => 9}, {"Spice World" => 14}, {"Breakfast Club" => 90}, ]
+    assert_equal array, tree.sort
+  end
+
   def test_sort_returns_array_of_data_in_ascending_order
-    skip
     tree = BinarySearchTree.new
     tree.insert(16, "Johnny English")
     tree.insert(92, "Sharknado 3")
-    tree.insert(50, "Hannibal Buress: Animal Furnace")
+    tree.insert(61, "Hannibal Buress: Animal Furnace")
     sorted_array = [{"Johnny English" =>16},
     {"Hannibal Buress: Animal Furnace" =>61}, {"Sharknado 3" =>92}]
     assert_equal sorted_array, tree.sort
@@ -489,7 +497,6 @@ meta sort: true
 
 
   def test_sort_returns_array_with_long_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(90, "Breakfast Club")
     tree.insert(8, "Mystic Pizza")
