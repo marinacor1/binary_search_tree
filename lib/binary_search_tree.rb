@@ -25,11 +25,15 @@ class BinarySearchTree
       insert(score, movie, node.left_link)
     elsif score < node.score && node.left_link.nil?
       node.left_link = current_node
+      node.depth += 1
     elsif score > node.score && node.right_link
       @right_counter += 1
       insert(score, movie, node.right_link)
+      node.depth += 1
     else score > node.score && node.right_link.nil?
       node.right_link = current_node
+      node.right_link.depth += 1
+      # node.depth += 1
     end
       if @left_counter > @right_counter
       @depth_counter = @right_counter

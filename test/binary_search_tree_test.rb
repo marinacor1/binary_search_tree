@@ -89,6 +89,14 @@ meta ly: true
     tree.insert(16, "Friends")
     assert_equal 1, tree.root_node.right_link.depth
   end
+meta wa: true
+  def test_depth_works_with_longer_trees
+    tree = BinarySearchTree.new
+    tree.insert(8, "The Fonz")
+    tree.insert(16, "Friends")
+    tree.insert(34, "My So Called Life")
+    assert_equal 2, tree.root_node.right_link.depth
+  end
 
 end
 
