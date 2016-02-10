@@ -449,8 +449,8 @@ class SortedArrayTest < Minitest::Test
 
   def test_sort_returns_emptyish_array_for_nil_tree
     tree = BinarySearchTree.new
-    emptyish_array = [{nil => nil}]
-    assert_equal emptyish_array, tree.sort
+    empty_array = []
+    assert_equal empty_array, tree.sort
   end
 meta sort: true
   def test_sort_returns_correct_array_for_single_tree
@@ -461,13 +461,21 @@ meta sort: true
   end
 
   def test_sort_returns_correct_array_for_two_node_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(90, "Breakfast Club")
     tree.insert(91, "Pretty in Pink")
     array = [{"Breakfast Club" => 90}, {"Pretty in Pink" => 91}]
     assert_equal array, tree.sort
   end
+
+  def test_sort_returns_ascending_array_for_two_node_tree
+    tree = BinarySearchTree.new
+    tree.insert(90, "Breakfast Club")
+    tree.insert(9, "Big Fish")
+    array = [{"Big Fish" => 9}, {"Breakfast Club" => 90}, ]
+    assert_equal array, tree.sort
+  end
+
   def test_sort_returns_array_of_data_in_ascending_order
     skip
     tree = BinarySearchTree.new
