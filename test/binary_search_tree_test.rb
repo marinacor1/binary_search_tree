@@ -144,7 +144,6 @@ meta depth: true
 
   meta boom: true
   def test_insert_returns_correct_depth_for_multiple_depths
-    skip
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, tree.insert(16, "Johnny English")
