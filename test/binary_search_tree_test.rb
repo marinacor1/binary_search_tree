@@ -80,6 +80,7 @@ class InsertTest < Minitest::Test
   end
 meta billy: true
   def test_insert_returns_depth_of_new_node
+    skip 
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
   end
@@ -87,6 +88,7 @@ meta billy: true
 meta depth: true
 
   def test_insert_works_with_two_nodes
+    skip
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, tree.insert(16, "Johnny English")
@@ -233,11 +235,11 @@ class MaxAndMinTest < Minitest::Test
 meta nilly: true
   def test_max_returns_nil_for_empty_tree
     tree = BinarySearchTree.new
-    assert_equal nil, tree.max
+    hash = {nil => 0}
+    assert_equal hash, tree.max
   end
 meta max: true
   def test_max_finds_highest_movie_information
-    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
@@ -248,7 +250,17 @@ meta max: true
   end
 
   def test_max_finds_highest_movie_on_skewed_to_left_tree
-    skip
+    tree = BinarySearchTree.new
+    tree.insert(90, "Walking on a Cloud")
+    tree.insert(83, "Milk")
+    tree.insert(72, "Discoman")
+    tree.insert(87, "Mrs. Doubtfire")
+    tree.insert(8, "Tootsie")
+    tree.insert(9, "Breakfast Club")
+    tree.insert(11, "Pretty in Pink")
+    tree.insert(2, "Say Anything")
+    hash = {"Walking on a Cloud" => 90}
+    assert_equal hash, tree.max
   end
 
   def test_max_finds_highest_movie_on_skewed_to_right_tree
