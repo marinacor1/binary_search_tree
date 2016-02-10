@@ -84,6 +84,7 @@ meta wawa: true
   end
 meta ly: true
   def test_depth_exists_with_more_than_one_node
+    skip 
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
     tree.insert(16, "Friends")
@@ -364,10 +365,32 @@ meta min: true
 
   def test_min_finds_highest_movie_on_skewed_to_left_tree
     skip
+    tree = BinarySearchTree.new
+    tree.insert(90, "Walking on a Cloud")
+    tree.insert(83, "Milk")
+    tree.insert(72, "Discoman")
+    tree.insert(87, "Mrs. Doubtfire")
+    tree.insert(8, "Tootsie")
+    tree.insert(9, "Breakfast Club")
+    tree.insert(11, "Pretty in Pink")
+    tree.insert(2, "Say Anything")
+    hash = {"Say Anything" => 2}
+    assert_equal hash, tree.min
   end
 
   def test_min_finds_highest_movie_on_skewed_to_right_tree
-  skip
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(72, "Discoman")
+    tree.insert(87, "Mrs. Doubtfire")
+    tree.insert(89, "Tootsie")
+    tree.insert(90, "Breakfast Club")
+    tree.insert(91, "Pretty in Pink")
+    tree.insert(92, "Say Anything")
+    hash = {"Walking on a Cloud" => 50}
+    assert_equal hash, tree.min
   end
 end
 

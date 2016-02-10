@@ -101,7 +101,7 @@ class BinarySearchTree
 
   def load(file)
     num = 0
-    File.open("../lib/movies.txt", "r") do |movie|
+    File.open("./lib/movies.txt", "r") do |movie|
       movie.each_line do |num|
         num +=1
       end
