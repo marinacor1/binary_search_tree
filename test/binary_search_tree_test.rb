@@ -151,29 +151,27 @@ meta depth: true
   end
 meta bean: true
   def test_insert_returns_correct_depth_for_depth_of_two
-    skip
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, tree.insert(16, "Johnny English")
-    assert_equal 1, tree.insert(92, "Sharknado 3")
-    bat=  tree.insert(99, "Batman")
-    assert_equal 2, bat
+    assert_equal 2, tree.insert(20, "THE LION KING")
+    # assert_equal 1, tree.insert(92, "Sharknado 3")
+    # bat=  tree.insert(99, "Batman")
+    # binding.pry
+    # assert_equal 2, bat
   end
 meta bow: true
   def test_insert_returns_correct_depth_if_heavily_skewed_to_right
-    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(63, "Titanic")
     tree.insert(92, "Selena")
     tree.insert(94, "Mickey Mouse")
     a = tree.insert(99, "Aladdin")
-    binding.pry
     assert_equal 4, a
   end
 
   def test_insert_returns_correct_depth_if_heavily_skewed_to_left
-    skip
     tree = BinarySearchTree.new
     tree.insert(95, "Bill & Ted's Excellent Adventure")
     tree.insert(93, "Titanic")
@@ -184,7 +182,6 @@ meta bow: true
 
 meta shark: true
   def test_insert_adds_node_to_right_if_higher
-    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
