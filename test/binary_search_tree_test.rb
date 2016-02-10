@@ -95,7 +95,7 @@ meta wa: true
     tree.insert(8, "The Fonz")
     tree.insert(16, "Friends")
     tree.insert(34, "My So Called Life")
-    assert_equal 2, tree.root_node.right_link.depth
+    assert_equal 2, tree.root_node.right_link.right_link.depth
   end
 meta ma: true
   def test_depth_works_with_links_to_left
@@ -105,7 +105,7 @@ meta ma: true
     tree.insert(34, "My So Called Life")
     assert_equal 1, tree.root_node.left_link.depth
   end
-meta pop: true 
+meta pop: true
   def test_depth_works_with_longer_trees_to_left
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
@@ -113,6 +113,16 @@ meta pop: true
     tree.insert(4, "My So Called Life")
     assert_equal 2, tree.root_node.left_link.left_link.depth
   end
+meta bigger: true
+    def test_depth_works_with_longer_trees_to_left
+      tree = BinarySearchTree.new
+      tree.insert(8, "The Fonz")
+      tree.insert(6, "Friends")
+      tree.insert(4, "My So Called Life")
+      tree.insert(3, "Happy Days")
+      tree.insert(2, "Chocolate")
+      assert_equal 4, tree.root_node.left_link.left_link.left_link.left_link.depth
+    end
 
 end
 
@@ -120,7 +130,6 @@ class InsertTest < Minitest::Test
 
 meta billy: true
   def test_insert_returns_depth_of_new_node
-    skip
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
   end
@@ -128,7 +137,6 @@ meta billy: true
 meta depth: true
 
   def test_insert_works_with_two_nodes
-    skip
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, tree.insert(16, "Johnny English")

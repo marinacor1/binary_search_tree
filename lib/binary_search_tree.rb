@@ -10,28 +10,30 @@ class BinarySearchTree
     @right_count = 0
     @max_node = 0
     @min_node = 0
+    @last_depth = 0
   end
 
-  def insert(score, movie, node = @root_node)
+  def insert(score, movie, node = @root_node, previous_depth = 0 )
     # binding.pry
     #How do I keep the value of depth through a recursion?
     current_node = Node.new(score, movie)
     if node.nil?
       @root_node = Node.new(score, movie)
     elsif score < node.score && node.left_link
-      current_node.depth = (root_node.depth +=1)
-      insert(score, movie, node.left_link)
+      current_node.depth = (previous_depth +=1)
+      #should really be parent_node.depth rather than root_node. ends up being bigger.
+      insert(score, movie, node.left_link, current_node.depth)
     elsif score < node.score && node.left_link.nil?
-      current_node.depth = (root_node.depth += 1)
+      current_node.depth = (previous_depth += 1)
       node.left_link = current_node
     elsif score > node.score && node.right_link
-      current_node.depth = (root_node.depth += 1)
-      insert(score, movie, node.right_link)
+      current_node.depth = (previous_depth += 1)
+      insert(score, movie, node.right_link, current_node.depth)
     else score > node.score && node.right_link.nil?
-      current_node.depth = (root_node.depth += 1)
+      current_node.depth = (previous_depth += 1)
       node.right_link = current_node
-      #issue when friends was supposed to get 1 added to depth, +1 actually went to fonz's depth because node had both elements. need to make sure node is just current__node
     end
+    current_node.depth
   end
 
   def include?(value, node = @root_node)
