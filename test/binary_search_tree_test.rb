@@ -91,11 +91,11 @@ meta ly: true
   end
 meta wa: true
   def test_depth_works_with_longer_trees
-    skip
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
     tree.insert(16, "Friends")
     tree.insert(34, "My So Called Life")
+    # binding.pry
     assert_equal 2, tree.root_node.right_link.depth
   end
 
@@ -347,8 +347,9 @@ end
 class LoadTest < Minitest::Test
 
   def test_load_reads_file_and_returns_number_of_movies
-    tree = BinarySearchTree.new 
-    assert_equal 26, tree.load('movies.txt')
+    skip
+    tree = BinarySearchTree.new
+    assert_equal 26, tree.load("movies.txt")
   end
 end
 
@@ -366,7 +367,6 @@ class HealthTest < Minitest::Test
     report0 = [[98, 7, 100]]
     report_1 = [[58, 6, 85]]
     report_2 = [[36, 2, 28], [93, 3, 42]]
-    #why is this two nested trees
     assert_equal report0, tree.health(0)
     assert_equal report_1, tree.health(1)
     assert_equal report_2, tree.health(2)

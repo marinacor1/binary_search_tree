@@ -10,13 +10,10 @@ class BinarySearchTree
     @right_count = 0
     @max_node = 0
     @min_node = 0
-    @depth_counter = 0
-    @left_counter = 0
-    @right_counter = 0
-
   end
 
   def insert(score, movie, node = @root_node)
+    # binding.pry
     current_node = Node.new(score, movie)
     if node.nil?
       @root_node = Node.new(score, movie)
@@ -26,22 +23,13 @@ class BinarySearchTree
     elsif score < node.score && node.left_link.nil?
       node.depth += 1
       node.left_link = current_node
-      node.depth +=1
     elsif score > node.score && node.right_link
       node.depth += 1
       insert(score, movie, node.right_link)
-      node.depth += 1
     else score > node.score && node.right_link.nil?
+      node.depth += 1
       node.right_link = current_node
-      node.right_link.depth += 1
-      # node.depth += 1
     end
-      if @left_counter > @right_counter
-      @depth_counter = @right_counter
-      else
-        @depth_counter =  @left_counter
-      end
-      @depth_counter + 1
   end
 
   def include?(value, node = @root_node)
@@ -112,10 +100,11 @@ class BinarySearchTree
 
   def load(file)
     num = 0
-    File.open("movies.txt", "r") do |movie|
+    File.open("../lib/movies.txt", "r") do |movie|
       movie.each_line do |num|
         num +=1
       end
+    num
     end
   end
 
