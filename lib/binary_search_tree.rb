@@ -19,17 +19,18 @@ class BinarySearchTree
     if node.nil?
       @root_node = Node.new(score, movie)
     elsif score < node.score && node.left_link
-      node.depth +=1
+      current_node.depth = (root_node.depth +=1)
       insert(score, movie, node.left_link)
     elsif score < node.score && node.left_link.nil?
-      node.depth += 2
+      current_node.depth = (root_node.depth += 1)
       node.left_link = current_node
     elsif score > node.score && node.right_link
-      node.depth += 1
+      current_node.depth = (root_node.depth += 1)
       insert(score, movie, node.right_link)
     else score > node.score && node.right_link.nil?
-      node.depth += 2
+      current_node.depth = (root_node.depth += 1)
       node.right_link = current_node
+      #issue when friends was supposed to get 1 added to depth, +1 actually went to fonz's depth because node had both elements. need to make sure node is just current__node
     end
   end
 

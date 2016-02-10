@@ -84,20 +84,34 @@ meta wawa: true
   end
 meta ly: true
   def test_depth_exists_with_more_than_one_node
-    skip 
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
     tree.insert(16, "Friends")
     assert_equal 1, tree.root_node.right_link.depth
   end
 meta wa: true
-  def test_depth_works_with_longer_trees
+  def test_depth_works_with_longer_trees_to_right
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
     tree.insert(16, "Friends")
     tree.insert(34, "My So Called Life")
-    # binding.pry
     assert_equal 2, tree.root_node.right_link.depth
+  end
+meta ma: true
+  def test_depth_works_with_links_to_left
+    tree = BinarySearchTree.new
+    tree.insert(8, "The Fonz")
+    tree.insert(6, "Friends")
+    tree.insert(34, "My So Called Life")
+    assert_equal 1, tree.root_node.left_link.depth
+  end
+meta pop: true 
+  def test_depth_works_with_longer_trees_to_left
+    tree = BinarySearchTree.new
+    tree.insert(8, "The Fonz")
+    tree.insert(6, "Friends")
+    tree.insert(4, "My So Called Life")
+    assert_equal 2, tree.root_node.left_link.left_link.depth
   end
 
 end
