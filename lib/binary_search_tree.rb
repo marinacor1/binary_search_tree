@@ -9,6 +9,7 @@ class BinarySearchTree
     @left_count = 0
     @right_count = 0
     @max_node = 0
+    @min_node = 0
     @depth_counter = 0
     @left_counter = 0
     @right_counter = 0
@@ -81,8 +82,22 @@ class BinarySearchTree
     maximum
   end
 
-  def min
-    #follows left leg until it's linked to nil, reads that score
+  def min(node = @root_node)
+    # binding.pry
+    minimum = {}
+    if @root_node.nil?
+      nil
+    elsif node.score > @min_node
+      @max_node
+    elsif node.score < @min_node && node.left_link
+      @min_node = node.score
+      min(node.right_link)
+    else node.score < @min_node && node.left_link.nil?
+      @min_node = node.score
+      @min_movie = node.movie
+    end
+    minimum[@min_movie] = @min_mode
+    minimum
   end
 
 end
