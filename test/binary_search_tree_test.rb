@@ -380,6 +380,28 @@ meta max: true
     hash = {"Say Anything" => 92}
     assert_equal hash, tree.max
   end
+
+  def test_max_works_with_very_large_tree
+    tree = BinarySearchTree.new
+    tree.insert(72, "Discoman")
+    tree.insert(87, "Mrs. Doubtfire")
+    tree.insert(89, "Tootsie")
+    tree.insert(90, "Breakfast Club")
+    tree.insert(8, "Mystical Pizza")
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(92, "Say Anything")
+    tree.insert(19, "Sisterhood of the Travel")
+    tree.insert(9, "Ski School")
+    tree.insert(11, "Ski School 2")
+    tree.insert(2, "Beauty and the Beast")
+    tree.insert(91, "Pretty in Pink")
+    tree.insert(83, "Wizards")
+    tree.insert(7, "Citizen Kane")
+    tree.insert(1, "Chocolat")
+    hash = {"Say Anything" => 92}
+    assert_equal hash, tree.max
+  end
 meta min: true
   def test_min_finds_lowest_movie_information
     skip
