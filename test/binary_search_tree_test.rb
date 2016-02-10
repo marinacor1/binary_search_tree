@@ -401,7 +401,6 @@ meta max: true
   end
 meta min: true
   def test_min_finds_lowest_movie_information
-    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
@@ -412,7 +411,6 @@ meta min: true
   end
 
   def test_min_finds_highest_movie_on_skewed_to_left_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(90, "Walking on a Cloud")
     tree.insert(83, "Milk")
@@ -427,7 +425,6 @@ meta min: true
   end
 
   def test_min_finds_highest_movie_on_skewed_to_right_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(50, "Walking on a Cloud")
     tree.insert(43, "Milk")
@@ -437,7 +434,7 @@ meta min: true
     tree.insert(90, "Breakfast Club")
     tree.insert(91, "Pretty in Pink")
     tree.insert(92, "Say Anything")
-    hash = {"Walking on a Cloud" => 50}
+    hash = {"Milk" => 43}
     assert_equal hash, tree.min
   end
 end

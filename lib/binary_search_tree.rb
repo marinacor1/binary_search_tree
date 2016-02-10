@@ -1,6 +1,5 @@
 require 'pry'
 require_relative 'node'
-# require_relative 'movies.txt'
 
 class BinarySearchTree
   attr_accessor :root_node, :left_count, :right_count, :max_node, :previous_depth
@@ -8,7 +7,7 @@ class BinarySearchTree
   def initialize
     @root_node = root_node
     @max_node = 0
-    @min_node = 0
+    @min_node = 100
     @last_depth = 0
     @previous_depth = 0
     @movie_collection = []
@@ -22,7 +21,6 @@ class BinarySearchTree
     current_node = Node.new(score, movie)
     if node.nil?
       @root_node = Node.new(score, movie)
-      # @root_node = current_node
       current_node.depth = 0
     elsif score < node.score && node.left_link
       current_node.depth = (@previous_depth +=1)
@@ -94,7 +92,6 @@ class BinarySearchTree
   end
 
   def min(node = @root_node)
-    # binding.pry
     minimum = {}
     if node.nil?
       nil
