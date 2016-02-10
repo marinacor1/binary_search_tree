@@ -14,6 +14,7 @@ class BinarySearchTree
 
   def insert(score, movie, node = @root_node)
     # binding.pry
+    #How do I keep the value of depth through a recursion?
     current_node = Node.new(score, movie)
     if node.nil?
       @root_node = Node.new(score, movie)

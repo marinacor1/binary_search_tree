@@ -248,8 +248,18 @@ class Depth_ofTest < Minitest::Test
     assert_equal nil, tree.depth_of(nil)
   end
 
+  def test_depth_of_will_return_nil_for_non_existing_value
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
+    assert_equal nil, tree.depth_of(45)
+  end
+
   def test_depth_finds_the_depth_of_tree
-    skip 
+    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
@@ -266,6 +276,32 @@ class Depth_ofTest < Minitest::Test
     tree.insert(92, "Sharknado 3")
     tree.insert(50, "Hannibal Buress: Animal Furnace")
     assert_equal 2, tree.depth_of(50)
+  end
+
+  def test_depth_of_works_with_skewed_to_right_trees
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(72, "Discoman")
+    tree.insert(87, "Mrs. Doubtfire")
+    tree.insert(89, "Tootsie")
+    tree.insert(90, "Breakfast Club")
+    tree.insert(91, "Pretty in Pink")
+    tree.insert(92, "Say Anything")
+  end
+
+  def test_depth_of_works_with_skewed_to_left_trees
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(90, "Walking on a Cloud")
+    tree.insert(83, "Milk")
+    tree.insert(72, "Discoman")
+    tree.insert(87, "Mrs. Doubtfire")
+    tree.insert(8, "Tootsie")
+    tree.insert(9, "Breakfast Club")
+    tree.insert(11, "Pretty in Pink")
+    tree.insert(2, "Say Anything")
   end
 end
 
