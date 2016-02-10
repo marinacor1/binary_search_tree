@@ -143,15 +143,22 @@ meta depth: true
   end
 
   meta boom: true
-  def test_insert_returns_correct_depth_for_multiple_depths
+  def test_insert_returns_correct_depth_for_multiple_nodes_on_same_depth
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, tree.insert(16, "Johnny English")
     assert_equal 1, tree.insert(92, "Sharknado 3")
   end
+meta bean: true 
+  def test_insert_returns_correct_depth_for_depth_of_two
+    tree = BinarySearchTree.new
+    assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
+    assert_equal 1, tree.insert(16, "Johnny English")
+    assert_equal 1, tree.insert(92, "Sharknado 3")
+    assert_equal 2, tree.insert(99, "Batman")
+  end
 meta bow: true
   def test_insert_returns_correct_depth_if_heavily_skewed_to_right
-    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(63, "Titanic")
@@ -271,7 +278,6 @@ class Depth_ofTest < Minitest::Test
   end
 
   def test_depth_of_will_return_nil_for_non_existing_value
-    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
@@ -280,8 +286,8 @@ class Depth_ofTest < Minitest::Test
     assert_equal nil, tree.depth_of(45)
   end
 
+meta bst: true
   def test_depth_finds_the_depth_of_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")
@@ -374,7 +380,6 @@ meta max: true
   end
 meta min: true
   def test_min_finds_lowest_movie_information
-    # skip
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
     tree.insert(16, "Johnny English")

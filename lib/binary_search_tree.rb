@@ -14,24 +14,25 @@ class BinarySearchTree
     @last_depth = 0
   end
 
-  def insert(score, movie, node = @root_node, previous_depth = 0 )
-    # binding.pry
-    #How do I keep the value of depth through a recursion?
+  def insert(score, movie, node = @root_node, previous_depth = @previous_depth )
     current_node = Node.new(score, movie)
     if node.nil?
       @root_node = Node.new(score, movie)
     elsif score < node.score && node.left_link
-      current_node.depth = (previous_depth +=1)
-      #should really be parent_node.depth rather than root_node. ends up being bigger.
+      current_node.depth = (@previous_depth +=1)
+      @previous_depth = current_node.depth
       insert(score, movie, node.left_link, current_node.depth)
     elsif score < node.score && node.left_link.nil?
-      current_node.depth = (previous_depth += 1)
+      current_node.depth = (@previous_depth += 1)
+      @previous_depth = current_node.depth
       node.left_link = current_node
     elsif score > node.score && node.right_link
-      current_node.depth = (previous_depth += 1)
+      current_node.depth = (@previous_depth += 1)
+      @previous_depth = current_node.depth
       insert(score, movie, node.right_link, current_node.depth)
     else score > node.score && node.right_link.nil?
-      current_node.depth = (previous_depth += 1)
+      current_node.depth = (@previous_depth += 1)
+      @previous_depth = current_node.depth
       node.right_link = current_node
     end
     current_node.depth
@@ -87,15 +88,16 @@ class BinarySearchTree
   end
 
   def min(node = @root_node)
+    # binding.pry
     minimum = {}
     if node.nil?
-      @min_node  = nil
+      nil
     elsif node.score > @min_node
       @min_node
     elsif node.score < @min_node && node.left_link
       @min_node = node.score
       min(node.left_link)
-    elsif node.score < @min_node && node.left_link.nil?
+    else node.score < @min_node && node.left_link.nil?
       @min_node = node.score
       @min_movie = node.movie
     end
