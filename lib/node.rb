@@ -1,7 +1,7 @@
 require_relative 'binary_search_tree'
 
 class Node
-  attr_accessor :score, :movie, :parent_link, :right_link, :left_link, :depth
+  attr_accessor :score, :movie, :right_link, :left_link, :depth
 
   def initialize(score, movie, right_link = nil, left_link = nil)
     @score = score

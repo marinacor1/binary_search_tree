@@ -527,9 +527,28 @@ meta arma: true
 end
 
 class HealthTest < Minitest::Test
+  meta none: true 
+  def test_health_returns_nil_for_non_existant_depth
+    tree = BinarySearchTree.new
+    tree.insert(8, "Mystic Pizza")
+    assert_equal [[]], tree.health(2)
+  end
 
+  def test_gives_nil_if_empty_tree
+    tree = BinarySearchTree.new
+    assert_equal [[]], tree.health(2)
+  end
+meta health: true
+  def test_gives_information_for_one_node_tree
+    tree = BinarySearchTree.new
+    tree.insert(8, "Mystic Pizza")
+    assert_equal [[8, 0, 100]], tree.health(0)
+  end
+
+meta mega_health: true
   def test_health_gives_accurate_report_for_tree
     skip
+    tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
     tree.insert(36, "Bill & Ted's Bogus Journey")

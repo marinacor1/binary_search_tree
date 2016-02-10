@@ -136,9 +136,35 @@ class BinarySearchTree
     sorted_array.uniq
   end
 
-  def health
-
+  def health(depth)
+    health_info = []
+    stats = []
+    # binding.pry
+    # if @root_node.depth == depth
+    if @root_node.nil?
+      score = nil
+    else
+      score = self.root_node.score
+    end
+    # @movie_collection.each do |hash|
+      stats << score
+      stats << children_nodes
+      stats << percent_children
+    # end
+    health_info << stats
   end
+
+  def children_nodes
+    self.sort.count - 1
+  end
+
+  def percent_children
+    fraction = self.sort.count/self.sort.count
+    fraction * 100
+  end
+
+
+
 
 
 end
