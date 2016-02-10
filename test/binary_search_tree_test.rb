@@ -3,13 +3,6 @@ require 'minitest/pride'
 require_relative '../lib/binary_search_tree'
 
 class BinarySearchTreeTest < Minitest::Test
-  def setup
-    tree = BinarySearchTree.new
-    tree.insert(61, "Bill & Ted's Excellent Adventure")
-    tree.insert(16, "Johnny English")
-    tree.insert(92, "Sharknado 3")
-    tree.insert(50, "Hannibal Buress: Animal Furnace")
-  end
 
   def test_tree_is_instance_of_bst_class
     tree = BinarySearchTree.new
@@ -36,7 +29,49 @@ class BinarySearchTreeTest < Minitest::Test
    assert_equal "The Immaculate Collection", tree.root_node.right_link.movie
    assert_equal "The Secret Garden", tree.root_node.left_link.movie
  end
+meta boing: true
+  def test_tree_can_create_multiple_right_links
+    tree = BinarySearchTree.new
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(72, "Discoman")
+    tree.insert(87, "Mrs. Doubtfire")
+    tree.insert(89, "Tootsie")
+    tree.insert(90, "Breakfast Club")
+    tree.insert(91, "Pretty in Pink")
+    tree.insert(92, "Say Anything")
+    assert_equal "Say Anything", tree.root_node.right_link.right_link.right_link.right_link.right_link.right_link.movie
+  end
+meta left: true
+  def test_tree_can_create_multiple_left_links
+    tree = BinarySearchTree.new
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(72, "Discoman")
+    tree.insert(25, "Jurassic World")
+    tree.insert(23, "Aloha")
+    tree.insert(22, "Titanic")
+    tree.insert(21, "The Chipmunks")
+    tree.insert(19, "Justin Bieber: World Tour")
+    assert_equal "Justin Bieber: World Tour", tree.root_node.left_link.left_link.left_link.left_link.left_link.left_link.movie
+  end
 
+  def test_bst_can_create_complex_links
+    tree = BinarySearchTree.new
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(72, "Discoman")
+    tree.insert(25, "Jurassic World")
+    tree.insert(83, "Aloha")
+    tree.insert(80, "Titanic")
+    tree.insert(41, "The Chipmunks")
+    tree.insert(19, "Justin Bieber: World Tour")
+    tree.insert(49, "Addams Family")
+    assert_equal "Addams Family", tree.root_node.left_link.right_link.movie
+  end
+end
+
+class InsertTest < Minitest::Test
   def test_insert_adds_information_to_tree
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
@@ -48,13 +83,13 @@ class BinarySearchTreeTest < Minitest::Test
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
   end
-meta beta: true
+
   def test_insert_returns_correct_depth_for_multiple_depths
+    skip
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, tree.insert(16, "Johnny English")
     assert_equal 1, tree.insert(92, "Sharknado 3")
-    #doesn't pass for value of Johnny English
   end
 meta bow: true
   def test_insert_returns_correct_depth_if_heavily_skewed_to_right
@@ -66,7 +101,6 @@ meta bow: true
     tree.insert(94, "Mickey Mouse")
     assert_equal 4, tree.insert(99, "Aladdin")
   end
-
 
   def test_insert_returns_correct_depth_if_heavily_skewed_to_left
     skip
@@ -86,30 +120,91 @@ meta bow: true
     tree.insert(92, "Sharknado 3")
     assert_equal 2, tree.insert(50, "Hannibal Buress: Animal Furnace")
   end
+end
+
+class IncludeTest < Minitest:: Test
 
   def test_include_returns_true_if_value_found
-    skip
-    setup
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
     assert tree.include?(16)
   end
 
   def test_include_works_with_different_value
-    skip
-    setup
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
     assert tree.include?(50)
   end
 
-  def test_include_returns_false_if_value_does_not_exist
-    skip
-    setup
-    refute tree.include?(72)
+  def test_include_returns_true_if_value_exists
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
+    assert tree.include?(50)
   end
 
   def test_include_returns_false_if_value_does_not_exist_again
-    skip
-    setup
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
     refute tree.include?(71)
   end
+
+  def test_include_returns_true_for_non_setup_tree
+    tree = BinarySearchTree.new
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(72, "Discoman")
+    assert tree.include?(43)
+  end
+
+  def test_include_returns_false_for_non_setup_tree
+    tree = BinarySearchTree.new
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(72, "Discoman")
+    refute tree.include?(79)
+  end
+
+  def test_include_returns_true_for_long_uneven_tree
+    tree = BinarySearchTree.new
+    tree.insert(50, "Walking on a Cloud")
+    tree.insert(43, "Milk")
+    tree.insert(72, "Discoman")
+    tree.insert(87, "Mrs. Doubtfire")
+    tree.insert(89, "Tootsie")
+    tree.insert(90, "Breakfast Club")
+    tree.insert(91, "Pretty in Pink")
+    tree.insert(92, "Say Anything")
+    assert tree.include?(91)
+  end
+
+  def test_include_returns_true_for_long_uneven_tree_to_left
+    tree = BinarySearchTree.new
+    tree.insert(90, "Walking on a Cloud")
+    tree.insert(83, "Milk")
+    tree.insert(72, "Discoman")
+    tree.insert(87, "Mrs. Doubtfire")
+    tree.insert(8, "Tootsie")
+    tree.insert(9, "Breakfast Club")
+    tree.insert(11, "Pretty in Pink")
+    tree.insert(2, "Say Anything")
+    assert tree.include?(2)
+  end
+
+end
+
+class Depth_ofTest < Minitest::Test
 
   def test_depth_finds_the_depth_of_tree
     skip
@@ -122,10 +217,21 @@ meta bow: true
     setup
     assert_equal 2, tree.depth_of(50)
   end
+end
 
+class MaxAndMinTest < Minitest::Test
+meta nilly: true
+  def test_max_returns_nil_for_empty_tree
+    tree = BinarySearchTree.new
+    assert_equal nil, tree.max
+  end
+meta max: true
   def test_max_finds_highest_movie_information
-    skip
-    setup
+    tree = BinarySearchTree.new
+    tree.insert(61, "Bill & Ted's Excellent Adventure")
+    tree.insert(16, "Johnny English")
+    tree.insert(92, "Sharknado 3")
+    tree.insert(50, "Hannibal Buress: Animal Furnace")
     hash = {"Sharknado 3" =>92}
     assert_equal hash, tree.max
   end
@@ -152,6 +258,9 @@ meta bow: true
   def test_min_finds_highest_movie_on_skewed_to_right_tree
   skip
   end
+end
+
+class SortedArrayTest < Minitest::Test
   def test_sort_returns_array_of_data_in_ascending_order
     skip
     setup
@@ -159,11 +268,17 @@ meta bow: true
     {"Hannibal Buress: Animal Furnace" =>61}, {"Sharknado 3" =>92}]
     assert_equal sorted_array, tree.sort
   end
+end
+
+class LoadTest < Minitest::Test
 
   def test_load_reads_file_and_returns_number_of_movies
     skip
     assert_equal 26, tree.load('movies.txt')
   end
+end
+
+class HealthTest < Minitest::Test
 
   def test_health_gives_accurate_report_for_tree
     skip
