@@ -1,5 +1,6 @@
 require 'pry'
-require_relative 'Node'
+require_relative 'node'
+require_relative 'file_reader'
 
 class BinarySearchTree
   attr_accessor :root_node, :left_count, :right_count, :max_node
@@ -65,8 +66,16 @@ class BinarySearchTree
     end
   end
 
-  def depth_of(score)
-
+  def depth_of(score, node = @root_node)
+    if node.nil?
+      nil
+    elsif node.score == score
+      node.depth
+    elsif score < node.score && node.left_link
+      depth_of(score, node.left_link)
+    else score > node.score && node.right_link
+      depth_of(score, node.right_link)
+    end
   end
 
   def max(node = @root_node)
@@ -102,5 +111,14 @@ class BinarySearchTree
     minimum[@min_movie] = @min_mode
     minimum
   end
+
+  def sort
+
+  end
+
+  def load
+
+  end
+
 
 end
