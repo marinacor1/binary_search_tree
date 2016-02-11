@@ -23,16 +23,12 @@ module Recursions
     end
   end
 
-  def child_right(node)
-    right_link_search(node)
-    @children += 1
-    children_nodes(node.right_link)
+  def right_link_search(node = @root_node)
+   all.map {|element| element.right_link }
   end
 
-  def child_left(node)
-    left_link_search(node)
-    @children += 1
-    children_nodes(node.left_link)
+  def left_link_search(node = @root_node)
+    all.map {|element| element.left_link }
   end
 
 end

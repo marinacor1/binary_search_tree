@@ -606,22 +606,20 @@ class HealthTest < Minitest::Test
     tree.insert(69, "Collateral Damage")
     assert_equal 7, tree.total_elements
 end
-meta a: true
-  def test_health_gives_accurate_report_for_tree
-    skip
-    tree = BinarySearchTree.new
-    tree.insert(98, "Animals United")
-    tree.insert(58, "Armageddon")
-    tree.insert(36, "Bill & Ted's Bogus Journey")
-    tree.insert(93, "Bill & Ted's Excellent Adventure")
-    tree.insert(86, "Charlie's Angels")
-    tree.insert(38, "Charlie's Country")
-    tree.insert(69, "Collateral Damage")
-    report0 = [[98, 7, 100]]
-    report_1 = [[58, 6, 85]]
-    report_2 = [[36, 2, 28], [93, 3, 42]]
-    assert_equal report0, tree.health(0)
-    assert_equal report_1, tree.health(1)
-    assert_equal report_2, tree.health(2)
-  end
+  # def test_health_gives_accurate_report_for_tree
+  #   tree = BinarySearchTree.new
+  #   tree.insert(98, "Animals United")
+  #   tree.insert(58, "Armageddon")
+  #   tree.insert(36, "Bill & Ted's Bogus Journey")
+  #   tree.insert(93, "Bill & Ted's Excellent Adventure")
+  #   tree.insert(86, "Charlie's Angels")
+  #   tree.insert(38, "Charlie's Country")
+  #   tree.insert(69, "Collateral Damage")
+  #   report0 = [[98, 7, 100]]
+  #   report_1 = [[58, 6, 85]]
+  #   report_2 = [[36, 2, 28], [93, 3, 42]]
+  #   assert_equal report0, tree.health(0)
+  #   assert_equal report_1, tree.health(1)
+  #   assert_equal report_2, tree.health(2)
+  # end
 end

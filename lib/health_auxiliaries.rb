@@ -33,8 +33,10 @@ module HealthAuxiliaries
    elsif no_childs(node)
      @children
    elsif node.right_link
+      @children +1
      child_right(node)
    else
+     @children + 1
      child_left(node)
    end
   end
@@ -47,13 +49,19 @@ module HealthAuxiliaries
     end
   end
 
-  def right_link_search(node = @root_node)
-   all.map {|element| element.right_link }
+
+  def child_right(node)
+    right_link_search(node)
+    @children += 1
+    children_nodes(node.right_link)
   end
 
-  def left_link_search(node = @root_node)
-    all.map {|element| element.left_link }
+  def child_left(node)
+    left_link_search(node)
+    @children += 1
+    children_nodes(node.left_link)
   end
+
 
   def percent_children(node)
     (children_nodes(node).to_f/ total_elements) * 100
