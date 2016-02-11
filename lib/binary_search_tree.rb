@@ -48,13 +48,8 @@ class BinarySearchTree
       true
     elsif value < node.score
       less_value(value, node)
-    elsif value > node.score
-      if node.right_link.nil?
-        false
-      else include?(value, node.right_link)
-      end
     else
-      false
+      greater_value(value, node)
     end
   end
 
@@ -62,6 +57,13 @@ class BinarySearchTree
     if node.left_link.nil?
       false
     else include?(value, node.left_link)
+    end
+  end
+
+  def greater_value(value ,node)
+    if node.right_link.nil?
+      false
+    else include?(value, node.right_link)
     end
   end
 
