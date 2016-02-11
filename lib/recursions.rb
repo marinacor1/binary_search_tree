@@ -1,5 +1,28 @@
 module Recursions
+  def insert_recursion(score, movie, node)
+    current_node = Node.new(score, movie)
+    if node.nil?
+      @root_node = Node.new(score, movie)
+      current_node.depth = 0
+    elsif score < node.score && node.left_link
+      current_node.depth = (@previous_depth +=1)
+      @previous_depth = current_node.depth
+      insert(score, movie, node.left_link)
+    elsif score < node.score && node.left_link.nil?
+      current_node.depth = (@previous_depth += 1)
+      @previous_depth = current_node.depth
+      node.left_link = current_node
+    elsif score > node.score && node.right_link
+      current_node.depth = (@previous_depth += 1)
+      @previous_depth = current_node.depth
+      insert(score, movie, node.right_link)
+    else score > node.score && node.right_link.nil?
+      current_node.depth = (@previous_depth += 1)
+      @previous_depth = current_node.depth
+      node.right_link = current_node
+    end
 
+  end
   def max_continued(node)
     @max_node = node.score
     max(node.right_link)
