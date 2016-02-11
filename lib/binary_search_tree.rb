@@ -2,14 +2,13 @@ require 'pry'
 require_relative 'node'
 
 class BinarySearchTree
-  attr_accessor :root_node, :left_count, :right_count, :max_node, :previous_depth, :sorted_array, :movie_collection
+  attr_accessor :root_node, :max_node, :sorted_array, :movie_collection
 
   def initialize
     @root_node = root_node
     @max_node = 0
     @min_node = 100
     @sorted_array = []
-    @sorts = {}
     @tree = []
   end
 
@@ -130,23 +129,33 @@ class BinarySearchTree
 
   def sort(node = @root_node)
     exceptions(node)
+    sort_check(node)
+    sorted_array.uniq
+  end
+
+  def sort_check(node)
     if node.nil?
       sorted_array
     else
-      if node.left_link
-        sort(node.left_link)
-      elsif
-        sorted_array << get_data(node)
-        if node.right_link
-          sort(node.right_link)
-        end
-      end
+      link_check(node)
       sorted_array << get_data(node)
-      if node.right_link
-        sort(node.right_link)
-      end
+      right_check(node)
     end
-    sorted_array.uniq
+  end
+
+  def link_check(node)
+    if node.left_link
+      sort(node.left_link)
+    elsif
+      sorted_array << get_data(node)
+      right_check(node)
+    end
+  end
+
+  def right_check(node)
+    if node.right_link
+      sort(node.right_link)
+    end
   end
 
   def exceptions(node)
