@@ -47,10 +47,7 @@ class BinarySearchTree
     elsif value == node.score
       true
     elsif value < node.score
-      if node.left_link.nil?
-        false
-      else include?(value, node.left_link)
-      end
+      less_value(value, node)
     elsif value > node.score
       if node.right_link.nil?
         false
@@ -60,6 +57,15 @@ class BinarySearchTree
       false
     end
   end
+
+  def less_value(value, node)
+    if node.left_link.nil?
+      false
+    else include?(value, node.left_link)
+    end
+  end
+
+
 
   def depth_of(score, node = @root_node)
     if node.nil?
@@ -133,6 +139,12 @@ class BinarySearchTree
     sorted_array.uniq
   end
 
+  def exceptions(node)
+    return [] if @root_node.nil?
+    return [get_data(@root_node)] if no_childs
+    return sorted_array << get_data(node) if no_childs
+  end
+
   def sort_check(node)
     if node.nil?
       sorted_array
@@ -156,12 +168,6 @@ class BinarySearchTree
     if node.right_link
       sort(node.right_link)
     end
-  end
-
-  def exceptions(node)
-    return [] if @root_node.nil?
-    return [get_data(@root_node)] if no_childs
-    return sorted_array << get_data(node) if no_childs
   end
 
   def no_childs
