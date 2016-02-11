@@ -161,20 +161,23 @@ class BinarySearchTree
       @children += 1
       children_nodes(node.left_link)
    end
-     if @children == total_elements
-       @children
-     else
-       @children + 1
-     end
+    maximum_child
    end
 
-   def right_link_search(node = @root_node)
-     all.map {|element| element.right_link }
-   end
+  def maximum_child
+    if @children == total_elements
+      @children
+    else
+      @children + 1
+    end
+  end
+  def right_link_search(node = @root_node)
+   all.map {|element| element.right_link }
+  end
 
-   def left_link_search(node = @root_node)
-     all.map {|element| element.left_link }
-   end
+  def left_link_search(node = @root_node)
+    all.map {|element| element.left_link }
+  end
 
   def percent_children(node)
     (children_nodes(node).to_f/ total_elements) * 100
