@@ -193,21 +193,17 @@ class BinarySearchTree
         sort(node.left_link)
       elsif
         tree << node
-        if node.right_link
-          sort(node.right_link)
-        end
+        right_check(node)
       end
       tree << node
-      if node.right_link
-        sort(node.right_link)
-      end
+      right_check(node)
     end
     total_elements(tree.uniq)
   end
 
   def total_elements(tree)
-      s = tree.to_s.split(",")
-      nodes = s.find_all {|node_elements| node_elements.include?("Node")}
+      tree_array = tree.to_s.split(",")
+      nodes = tree_array.find_all {|node_elements| node_elements.include?("Node")}
       nodes.count
   end
 
