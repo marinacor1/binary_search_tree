@@ -8,7 +8,6 @@ class BinarySearchTree
   attr_accessor :root_node, :max_node, :sorted_array, :movie_collection, :previous_depth, :tree
 
   def initialize
-    @root_node = root_node
     @max_node = 0
     @min_node = 100
     @sorted_array = []
