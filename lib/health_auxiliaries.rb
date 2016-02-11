@@ -39,11 +39,6 @@ module HealthAuxiliaries
    end
   end
 
-
-  def no_childs(node = @root_node)
-    node.left_link.nil? && node.right_link.nil?
-  end
-
   def maximum_child
     if @children == total_elements
       @children
