@@ -29,7 +29,7 @@ class BinarySearchTreeTest < Minitest::Test
    assert_equal "The Immaculate Collection", tree.root_node.right_link.movie
    assert_equal "The Secret Garden", tree.root_node.left_link.movie
  end
-meta boing: true
+
   def test_tree_can_create_multiple_right_links
     tree = BinarySearchTree.new
     tree.insert(50, "Walking on a Cloud")
@@ -42,7 +42,7 @@ meta boing: true
     tree.insert(92, "Say Anything")
     assert_equal "Say Anything", tree.root_node.right_link.right_link.right_link.right_link.right_link.right_link.movie
   end
-meta left: true
+
   def test_tree_can_create_multiple_left_links
     tree = BinarySearchTree.new
     tree.insert(50, "Walking on a Cloud")
@@ -69,27 +69,27 @@ meta left: true
     tree.insert(49, "Addams Family")
     assert_equal "Addams Family", tree.root_node.left_link.right_link.movie
   end
-  meta booger: true
+
   def test_insert_adds_information_to_tree
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
     assert_equal "The Fonz", tree.root_node.movie
     assert_equal 8, tree.root_node.score
   end
-meta wawa: true
+
   def test_depth_exists
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
     assert_equal 0, tree.root_node.depth
   end
-meta ly: true
+
   def test_depth_exists_with_more_than_one_node
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
     tree.insert(16, "Friends")
     assert_equal 1, tree.root_node.right_link.depth
   end
-meta wa: true
+
   def test_depth_works_with_longer_trees_to_right
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
@@ -97,7 +97,7 @@ meta wa: true
     tree.insert(34, "My So Called Life")
     assert_equal 2, tree.root_node.right_link.right_link.depth
   end
-meta ma: true
+
   def test_depth_works_with_links_to_left
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
@@ -105,7 +105,7 @@ meta ma: true
     tree.insert(34, "My So Called Life")
     assert_equal 1, tree.root_node.left_link.depth
   end
-meta pop: true
+
   def test_depth_works_with_longer_trees_to_left
     tree = BinarySearchTree.new
     tree.insert(8, "The Fonz")
@@ -113,7 +113,7 @@ meta pop: true
     tree.insert(4, "My So Called Life")
     assert_equal 2, tree.root_node.left_link.left_link.depth
   end
-meta bigger: true
+
     def test_depth_works_with_longer_trees_to_left
       tree = BinarySearchTree.new
       tree.insert(8, "The Fonz")
@@ -127,14 +127,10 @@ meta bigger: true
 end
 
 class InsertTest < Minitest::Test
-
-meta billy: true
   def test_insert_returns_depth_of_new_node
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
   end
-
-meta depth: true
 
   def test_insert_works_with_two_nodes
     tree = BinarySearchTree.new
@@ -142,14 +138,13 @@ meta depth: true
     assert_equal 1, tree.insert(16, "Johnny English")
   end
 
-  meta boom: true
   def test_insert_returns_correct_depth_for_multiple_nodes_on_same_depth
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
     assert_equal 1, tree.insert(16, "Johnny English")
     assert_equal 1, tree.insert(92, "Sharknado 3")
   end
-meta bean: true
+
   def test_insert_returns_correct_depth_for_depth_of_two
     tree = BinarySearchTree.new
     assert_equal 0, tree.insert(61, "Bill & Ted's Excellent Adventure")
@@ -160,7 +155,7 @@ meta bean: true
     # binding.pry
     # assert_equal 2, bat
   end
-meta bow: true
+
   def test_insert_returns_correct_depth_if_heavily_skewed_to_right
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
@@ -180,7 +175,6 @@ meta bow: true
     assert_equal 4, tree.insert(89, "Aladdin")
   end
 
-meta shark: true
   def test_insert_adds_node_to_right_if_higher
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
@@ -288,7 +282,6 @@ class Depth_ofTest < Minitest::Test
     assert_equal nil, tree.depth_of(45)
   end
 
-meta bst: true
   def test_depth_finds_the_depth_of_tree
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
@@ -333,13 +326,12 @@ meta bst: true
 end
 
 class MaxAndMinTest < Minitest::Test
-meta nilly: true
   def test_max_returns_nil_for_empty_tree
     tree = BinarySearchTree.new
     hash = {nil => 0}
     assert_equal hash, tree.max
   end
-meta max: true
+
   def test_max_finds_highest_movie_information
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
@@ -399,7 +391,7 @@ meta max: true
     hash = {"Say Anything" => 92}
     assert_equal hash, tree.max
   end
-meta min: true
+
   def test_min_finds_lowest_movie_information
     tree = BinarySearchTree.new
     tree.insert(61, "Bill & Ted's Excellent Adventure")
@@ -447,14 +439,13 @@ class SortedArrayTest < Minitest::Test
     assert_equal empty_array, tree.sort
   end
 
-meta sort: true
   def test_sort_returns_correct_array_for_single_tree
     tree = BinarySearchTree.new
     tree.insert(92, "Say Anything")
     array = [{"Say Anything" => 92}]
     assert_equal array, tree.sort
   end
-meta pink: true
+
   def test_sort_returns_correct_array_for_two_node_tree
     tree = BinarySearchTree.new
     tree.insert(90, "Breakfast Club")
@@ -462,7 +453,7 @@ meta pink: true
     array = [{"Breakfast Club" => 90}, {"Pretty in Pink" => 91}]
     assert_equal array, tree.sort
   end
-meta break: true
+
   def test_sort_returns_ascending_array_for_two_node_tree
     tree = BinarySearchTree.new
     tree.insert(90, "Breakfast Club")
@@ -489,7 +480,6 @@ meta break: true
     {"Hannibal Buress: Animal Furnace" =>61}, {"Sharknado 3" =>92}]
     assert_equal sorted_array, tree.sort
   end
-meta megamega: true
 
   def test_sort_returns_array_with_long_tree
     tree = BinarySearchTree.new
@@ -512,13 +502,11 @@ meta megamega: true
 end
 
 class LoadTest < Minitest::Test
-
-meta load:true
   def test_load_reads_file_and_returns_number_of_movies
     tree = BinarySearchTree.new
     assert_equal 100, tree.load("movies.txt")
   end
-meta arma: true
+
   def test_load_reads_file_and_creates_tree
     tree = BinarySearchTree.new
     assert_equal 100, tree.load("movies.txt")
@@ -528,7 +516,6 @@ meta arma: true
 end
 
 class HealthTest < Minitest::Test
-  meta none: true
   def test_health_returns_nil_for_non_existant_depth
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
@@ -539,27 +526,26 @@ class HealthTest < Minitest::Test
     tree = BinarySearchTree.new
     assert_equal [], tree.health(2)
   end
-meta mystic: true
+
   def test_health_gives_score_information_for_one_node_tree
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     assert_equal 8, tree.health(0)[0][0]
   end
 
-meta pizza: true
   def test_health_gives_information_for_one_node_tree
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     assert_equal [[8, 1, 100]], tree.health(0)
   end
-meta sista: true
+
   def test_health_gives_information_for_two_node_tree
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     tree.insert(19, "Sisterhood of the Travel")
     assert_equal [[8, 2, 100]], tree.health(0)
   end
-meta wowww: true
+
   def test_score_is_returned_for_multi_node_tree
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
@@ -570,7 +556,6 @@ meta wowww: true
     assert_equal 9, tree.health(4)[0][0]
   end
 
-meta wcww: true
   def test_score_is_returned_for_left_right_tree
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
@@ -580,7 +565,7 @@ meta wcww: true
     tree.insert(9, "Ski School")
     assert_equal [[9, 1, 20]], tree.health(3)
   end
-meta ar: true
+
   def test_score_is_returned_for_two_node_tree
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
@@ -589,7 +574,6 @@ meta ar: true
     assert_equal 48, tree.health(2)[0][0]
   end
 
-meta lylas: true
   def test_score_is_returned_for_two_node_tree_to_right
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
@@ -598,19 +582,19 @@ meta lylas: true
     tree.insert(12, "Argdon")
     assert_equal [[12, 1, 25], [108, 2, 75]], tree.health(1)
   end
-meta child: true
+
   def test_health_returns_correct_score_and_child_num
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     assert_equal [[98, 1, 100]], tree.health(0)
   end
-meta inform: true
+
   def test_all_returns_all_information
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     assert_equal 1, tree.total_elements
   end
-meta all: true
+
   def test_all_returns_all_information_for_large_tree
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
@@ -622,7 +606,7 @@ meta all: true
     tree.insert(69, "Collateral Damage")
     assert_equal 7, tree.total_elements
 end
-meta mega_health: true
+
   def test_health_gives_accurate_report_for_tree
     skip
     tree = BinarySearchTree.new
