@@ -1,5 +1,25 @@
 module Recursions
 
+  def max_continued(node)
+    @max_node = node.score
+    max(node.right_link)
+  end
+
+  def max_switch(node)
+    @max_node = node.score
+    @max_movie = node.movie
+  end
+
+  def min_continued(node)
+    @min_node = node.score
+    min(node.left_link)
+  end
+
+  def min_switch(node)
+    @min_node = node.score
+    @min_movie = node.movie
+  end
+
   def base_depth(node)
     if node == @root_node
       @previous_depth = 0
@@ -107,6 +127,14 @@ module Recursions
     left_link_search(node)
     @children += 1
     children_nodes(node.left_link)
+  end
+
+  def maximum_child
+    if @children == total_elements
+      @children
+    else
+      @children + 1
+    end
   end
 
 

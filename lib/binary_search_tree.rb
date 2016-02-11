@@ -81,11 +81,9 @@ class BinarySearchTree
     elsif node.score < @max_node
       @max_node
     elsif node.score > @max_node && node.right_link
-      @max_node = node.score
-      max(node.right_link)
+      max_continued(node)
     else node.score > @max_node && node.right_link.nil?
-      @max_node = node.score
-      @max_movie = node.movie
+      max_switch(node)
     end
     maximum[@max_movie] = @max_node
     maximum
@@ -98,15 +96,14 @@ class BinarySearchTree
     elsif node.score > @min_node
       @min_node
     elsif node.score < @min_node && node.left_link
-      @min_node = node.score
-      min(node.left_link)
+      min_continued(node)
     else node.score < @min_node && node.left_link.nil?
-      @min_node = node.score
-      @min_movie = node.movie
+      min_switch(node)
     end
     minimum[@min_movie] = @min_node
     minimum
   end
+
 
   def load(file)
     movies = []
@@ -138,7 +135,7 @@ class BinarySearchTree
   end
 
   def total_elements
-      self.sort.count
+    self.sort.count
   end
 
   def health(depth, node = @root_node)
@@ -155,14 +152,6 @@ class BinarySearchTree
     child_check(node)
     maximum_child
    end
-
-  def maximum_child
-    if @children == total_elements
-      @children
-    else
-      @children + 1
-    end
-  end
 
   def right_link_search(node = @root_node)
    all.map {|element| element.right_link }
