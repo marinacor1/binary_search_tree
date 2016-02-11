@@ -93,18 +93,6 @@ module Recursions
     return sorted_array << get_data(node) if no_childs(@root_node)
   end
 
-  def child_check(node)
-    if self.nil?
-      @children = nil
-    elsif no_childs(node)
-      @children
-    elsif node.right_link
-      child_right(node)
-    else
-      child_left(node)
-    end
-  end
-
   def sort_check(node)
     if node.nil?
       sorted_array
@@ -128,10 +116,6 @@ module Recursions
     if node.right_link
       sort(node.right_link)
     end
-  end
-
-  def no_childs(node = @root_node)
-    node.left_link.nil? && node.right_link.nil?
   end
 
   def get_data(node)
@@ -175,13 +159,6 @@ module Recursions
     children_nodes(node.left_link)
   end
 
-  def maximum_child
-    if @children == total_elements
-      @children
-    else
-      @children + 1
-    end
-  end
 
 
 

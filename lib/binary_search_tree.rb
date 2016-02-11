@@ -5,7 +5,7 @@ require_relative 'health_auxilaries'
 
 class BinarySearchTree
   include Recursions
-  include Health
+  include HealthAuxilaries
 
   attr_accessor :root_node, :max_node, :sorted_array, :previous_depth, :tree
 
