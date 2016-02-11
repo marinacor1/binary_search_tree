@@ -85,5 +85,31 @@ module Recursions
     end
   end
 
+  def child_check(node)
+    if all.nil?
+      @children = nil
+    elsif no_childs(node)
+      @children
+    elsif node.right_link
+      child_right(node)
+    else
+      child_left(node)
+    end
+  end
+
+  def child_right(node)
+    right_link_search(node)
+    @children += 1
+    children_nodes(node.right_link)
+  end
+
+  def child_left(node)
+    left_link_search(node)
+    @children += 1
+    children_nodes(node.left_link)
+  end
+
+
+
 
 end

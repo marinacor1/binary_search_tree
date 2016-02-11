@@ -112,13 +112,17 @@ class BinarySearchTree
     movies = []
     File.open("./lib/movies.txt", "r") do |movie|
       movie.each_line do |title|
-        movies << title
-        score = title.split(",")[0].to_i
-        movie = title.split(",")[1].chomp
-        insert(score, movie)
+       movie_insert(movies, title)
       end
      movies.length
     end
+  end
+
+  def movie_insert(movies, title)
+    movies << title
+    score = title.split(",")[0].to_i
+    movie = title.split(",")[1].chomp
+    insert(score, movie)
   end
 
   def sort(node = @root_node)
@@ -148,15 +152,7 @@ class BinarySearchTree
   end
 
   def children_nodes(node)
-   if all.nil?
-     @children = nil
-   elsif no_childs(node)
-     @children
-   elsif node.right_link
-     child_right(node)
-   else
-     child_left(node)
-   end
+    child_check(node)
     maximum_child
    end
 
@@ -166,18 +162,6 @@ class BinarySearchTree
     else
       @children + 1
     end
-  end
-
-  def child_right(node)
-    right_link_search(node)
-    @children += 1
-    children_nodes(node.right_link)
-  end
-
-  def child_left(node)
-    left_link_search(node)
-    @children += 1
-    children_nodes(node.left_link)
   end
 
   def right_link_search(node = @root_node)
