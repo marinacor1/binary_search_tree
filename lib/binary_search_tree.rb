@@ -139,10 +139,7 @@ class BinarySearchTree
   # end
 
   def sort(node = @root_node)
-    return [] if @root_node.nil?
-    return [get_data(@root_node)] if @root_node.left_link.nil? && @root_node.right_link.nil?
-    return @sorted_array << get_data(node) if node.left_link.nil? && node.right_link.nil?
-
+    exceptions(node)
     if node.nil?
       @sorted_array
     else
@@ -161,6 +158,12 @@ class BinarySearchTree
       end
     end
     @sorted_array.uniq
+  end
+
+  def exceptions(node)
+    return [] if @root_node.nil?
+    return [get_data(@root_node)] if @root_node.left_link.nil? && @root_node.right_link.nil?
+    return @sorted_array << get_data(node) if node.left_link.nil? && node.right_link.nil?
   end
 
   def get_data(node)

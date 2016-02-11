@@ -565,6 +565,7 @@ meta wowww: true
 
 meta wcww: true
   def test_score_is_returned_for_left_right_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(38, "Armageddon")
