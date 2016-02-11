@@ -194,10 +194,14 @@ class BinarySearchTree
     if node.nil?
       @tree
     else
-      tree_link_check(node)
-      @tree << node
-      right_check(node)
+      tree_search(node)
     end
+  end
+
+  def tree_search(node)
+    tree_link_check(node)
+    @tree << node
+    right_check(node)
   end
   def tree_link_check(node)
     if node.left_link
@@ -225,8 +229,7 @@ class BinarySearchTree
   end
 
   def children_nodes
-   "hi"
-    # self.root_node.right_link + self.root_node.left_link + 1
+   all
   end
 
   def percent_children
