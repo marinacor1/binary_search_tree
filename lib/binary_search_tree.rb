@@ -1,11 +1,11 @@
 require 'pry'
 require_relative 'node'
 require_relative 'recursions'
-require_relative 'health_auxilaries'
+require_relative 'health_auxiliaries'
 
 class BinarySearchTree
   include Recursions
-  include HealthAuxilaries
+  include HealthAuxiliaries
 
   attr_accessor :root_node, :max_node, :sorted_array, :previous_depth, :tree
 

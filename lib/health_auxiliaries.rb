@@ -1,6 +1,6 @@
 require_relative 'binary_search_tree'
 
-module HealthAuxilaries
+module HealthAuxiliaries
   include Recursions
 
   def all(node = @root_node)
