@@ -133,15 +133,15 @@ class BinarySearchTree
     tree.uniq
   end
 
-  def total_elements(tree)
-      tree.sort.count
+  def total_elements
+      self.sort.count
   end
 
   def health(depth, node = @root_node)
     if node.nil?
       []
     elsif depth == node.depth
-     [[node.score, children_nodes(node)]]
+     [[node.score, children_nodes(node), percent_children(node)]]
     else
       health(depth, node.left_link) + health(depth, node.right_link)
     end
@@ -172,11 +172,12 @@ class BinarySearchTree
      all.map {|element| element.left_link }
    end
 
-  def percent_children
-    total =
-    total = self.sort.count
-    fraction = self.sort.count/total
-    fraction * 100
+  def percent_children(node)
+    children_nodes(node)/ total_elements
+  end
+
+  def total_nodes(node = @root_node)
+    node.count
   end
 
 end

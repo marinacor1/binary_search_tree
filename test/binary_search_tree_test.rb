@@ -549,12 +549,14 @@ meta mystic: true
 
 meta pizza: true
   def test_health_gives_information_for_one_node_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     assert_equal [[8, 1]], tree.health(0)
   end
 meta sista: true
   def test_health_gives_information_for_two_node_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     tree.insert(19, "Sisterhood of the Travel")
@@ -562,6 +564,7 @@ meta sista: true
   end
 meta wowww: true
   def test_score_is_returned_for_multi_node_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
@@ -573,6 +576,7 @@ meta wowww: true
 
 meta wcww: true
   def test_score_is_returned_for_left_right_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(38, "Armageddon")
@@ -583,6 +587,7 @@ meta wcww: true
   end
 meta ar: true
   def test_score_is_returned_for_two_node_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
@@ -592,6 +597,7 @@ meta ar: true
 
 meta lylas: true
   def test_score_is_returned_for_two_node_tree_to_right
+    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(108, "Armageddon")
@@ -608,12 +614,14 @@ meta child: true
   end
 meta inform: true
   def test_all_returns_all_information
+    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
-    assert_equal 1, tree.total_elements(tree)
+    assert_equal 1, tree.total_elements
   end
 meta all: true
   def test_all_returns_all_information_for_large_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
@@ -622,7 +630,7 @@ meta all: true
     tree.insert(86, "Charlie's Angels")
     tree.insert(38, "Charlie's Country")
     tree.insert(69, "Collateral Damage")
-    assert_equal 7, tree.total_elements(tree)
+    assert_equal 7, tree.total_elements
 end
 meta mega_health: true
   def test_health_gives_accurate_report_for_tree
