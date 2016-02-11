@@ -152,7 +152,6 @@ class BinarySearchTree
         end
       end
       @sorted_array << get_data(node)
-
       if node.right_link
         sort(node.right_link)
       end
@@ -162,10 +161,13 @@ class BinarySearchTree
 
   def exceptions(node)
     return [] if @root_node.nil?
-    return [get_data(@root_node)] if @root_node.left_link.nil? && @root_node.right_link.nil?
-    return @sorted_array << get_data(node) if node.left_link.nil? && node.right_link.nil?
+    return [get_data(@root_node)] if no_childs
+    return @sorted_array << get_data(node) if no_childs
   end
 
+  def no_childs
+    @root_node.left_link.nil? && @root_node.right_link.nil?
+  end
   def get_data(node)
     sorts = {}
     sorts[node.movie] = node.score
