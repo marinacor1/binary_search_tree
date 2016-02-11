@@ -185,24 +185,25 @@ class BinarySearchTree
   end
 
   def all(node = @root_node)
+    tree = []
     exceptions(node)
     if node.nil?
-      @tree
+      tree
     else
       if node.left_link
         sort(node.left_link)
       elsif
-        @tree << node
+        tree << node
         if node.right_link
           sort(node.right_link)
         end
       end
-      @tree << node
+      tree << node
       if node.right_link
         sort(node.right_link)
       end
     end
-    @tree.uniq
+    tree.uniq
   end
 
   def health(depth, node = @root_node)
