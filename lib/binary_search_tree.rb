@@ -2,7 +2,7 @@ require 'pry'
 require_relative 'node'
 
 class BinarySearchTree
-  attr_accessor :root_node, :left_count, :right_count, :max_node, :previous_depth, :sorted_array
+  attr_accessor :root_node, :max_node, :previous_depth, :sorted_array, :movie_collection, :right_link, :left_link
 
   def initialize
     @root_node = root_node
@@ -13,6 +13,7 @@ class BinarySearchTree
     @movie_collection = []
     @sorted_array = []
     @sorts = {}
+    @tree = []
   end
 
   def insert(score, movie, node = @root_node)
@@ -168,6 +169,7 @@ class BinarySearchTree
   def no_childs
     @root_node.left_link.nil? && @root_node.right_link.nil?
   end
+
   def get_data(node)
     sorts = {}
     sorts[node.movie] = node.score
@@ -175,39 +177,46 @@ class BinarySearchTree
   end
 
   def all(node = @root_node)
+    exceptions(node)
     if node.nil?
-      @sorted_array << node
+      @tree
     else
-      sort(node.left_link)
-      @sorted_array << node
-      sort(node.right_link)
-      @sorted_array << node
+      if node.left_link
+        sort(node.left_link)
+      elsif
+        @tree << node
+        if node.right_link
+          sort(node.right_link)
+        end
+      end
+      @tree << node
+      if node.right_link
+        sort(node.right_link)
+      end
     end
+    @tree.uniq
   end
-
-  # def sort
-  #   sorted_array = @movie_collection.map do |hash|
-  #     hash.map do |k, v|
-  #       v
-  #     end
-  #   end
-  #   sorted_array.uniq
-  # end
 
   def health(depth, node = @root_node)
     if node.nil?
       []
     elsif depth == node.depth
-     [[node.score, children_nodes]]
+     [[node.score, children_nodes(node)]]
     else
       health(depth, node.left_link) + health(depth, node.right_link)
     end
   end
 
-  def children_nodes
-    @movie_collection.count
-    # binding.pry
-    # self.root_node.right_link + self.root_node.left_link + 1
+  def children_nodes(node)
+    if all(node).first.right_link.nil? && all(node).first.left_link.nil?
+      1
+    else
+      # binding.pry
+      alls = all(node).map do |info|
+        info[0]
+      end
+    end
+      alls.count
   end
 
   def percent_children
@@ -216,9 +225,5 @@ class BinarySearchTree
     fraction = self.sort.count/total
     fraction * 100
   end
-
-
-
-
 
 end

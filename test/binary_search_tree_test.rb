@@ -530,27 +530,34 @@ end
 class HealthTest < Minitest::Test
   meta none: true
   def test_health_returns_nil_for_non_existant_depth
-    # skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     assert_equal [], tree.health(2)
   end
 
-  def test_gives_nil_if_empty_tree
+  def test_health_gives_nil_if_empty_tree
     tree = BinarySearchTree.new
     assert_equal [], tree.health(2)
   end
 meta mystic: true
-  def test_gives_score_information_for_one_node_tree
+  def test_health_gives_score_information_for_one_node_tree
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     assert_equal 8, tree.health(0)[0][0]
   end
 
-  def test_gives_information_for_one_node_tree
+meta pizza: true
+  def test_health_gives_information_for_one_node_tree
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     assert_equal [[8, 1]], tree.health(0)
+  end
+meta sista: true
+  def test_health_gives_information_for_two_node_tree
+    tree = BinarySearchTree.new
+    tree.insert(8, "Mystic Pizza")
+    tree.insert(19, "Sisterhood of the Travel")
+    assert_equal [[19, 2]], tree.health(0)
   end
 meta wowww: true
   def test_score_is_returned_for_two_node_tree
@@ -600,12 +607,25 @@ meta child: true
     assert_equal [[98, 1]], tree.health(0)
   end
 
-  # def test_all_returns_all_information
-  #   tree = BinarySearchTree.new
-  #   tree.insert(98, "Animals United")
-  #   assert_equal [[98, 1]], tree.all(0)
-  # end
-
+  def test_all_returns_all_information
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(98, "Animals United")
+    assert_equal 1, tree.all.count
+  end
+meta all: true
+  def test_all_returns_all_information_for_large_tree
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(98, "Animals United")
+    tree.insert(58, "Armageddon")
+    tree.insert(36, "Bill & Ted's Bogus Journey")
+    tree.insert(93, "Bill & Ted's Excellent Adventure")
+    tree.insert(86, "Charlie's Angels")
+    tree.insert(38, "Charlie's Country")
+    tree.insert(69, "Collateral Damage")
+    assert_equal 7, tree.all.count
+end
 meta mega_health: true
   def test_health_gives_accurate_report_for_tree
     skip
