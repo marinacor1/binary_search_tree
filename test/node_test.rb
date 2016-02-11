@@ -20,4 +20,9 @@ class NodeTest < Minitest::Test
     assert_equal 90, node.score
   end
 
+  def test_node_initializes_depth_at_zero
+    node = Node.new(90, "Lost in Translation")
+    assert_equal 0, node.depth
+  end
+
 end

@@ -9,7 +9,6 @@ class BinarySearchTree
     @max_node = 0
     @min_node = 100
     @sorted_array = []
-    @tree = []
   end
 
   def insert(score, movie, node = @root_node)
@@ -203,7 +202,13 @@ class BinarySearchTree
         sort(node.right_link)
       end
     end
-    tree.uniq
+    total_elements(tree.uniq)
+  end
+
+  def total_elements(tree)
+      s = tree.to_s.split(",")
+      nodes = s.find_all {|node_elements| node_elements.include?("Node")}
+      nodes.count
   end
 
   def health(depth, node = @root_node)
