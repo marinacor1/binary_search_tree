@@ -10,8 +10,7 @@ module Recursions
       depth_change(current_node)
       node.left_link = current_node
     elsif score > node.score && node.right_link
-      current_node.depth = (@previous_depth += 1)
-      @previous_depth = current_node.depth
+      depth_change(current_node)
       insert(score, movie, node.right_link)
     else score > node.score && node.right_link.nil?
       depth_change(current_node)
