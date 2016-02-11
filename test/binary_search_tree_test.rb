@@ -554,15 +554,13 @@ meta pizza: true
   end
 meta sista: true
   def test_health_gives_information_for_two_node_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     tree.insert(19, "Sisterhood of the Travel")
-    assert_equal [[8, 2]], tree.health(0)
+    assert_equal [[8, 2, 100]], tree.health(0)
   end
 meta wowww: true
   def test_score_is_returned_for_multi_node_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
@@ -574,18 +572,16 @@ meta wowww: true
 
 meta wcww: true
   def test_score_is_returned_for_left_right_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(38, "Armageddon")
     tree.insert(48, "Armadon")
     tree.insert(19, "Sisterhood of the Travel")
     tree.insert(9, "Ski School")
-    assert_equal [[9, 1]], tree.health(3)
+    assert_equal [[9, 1, 20]], tree.health(3)
   end
 meta ar: true
   def test_score_is_returned_for_two_node_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")

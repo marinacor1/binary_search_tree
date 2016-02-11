@@ -141,7 +141,7 @@ class BinarySearchTree
     if node.nil?
       []
     elsif depth == node.depth
-     [[node.score, children_nodes(node), percent_children(node)]]
+     [[node.score, children_nodes(node), percent_children(node).to_i]]
     else
       health(depth, node.left_link) + health(depth, node.right_link)
     end
@@ -173,7 +173,7 @@ class BinarySearchTree
    end
 
   def percent_children(node)
-    children_nodes(node)/ total_elements * 100
+    (children_nodes(node).to_f/ total_elements) * 100
   end
 
   def total_nodes(node = @root_node)
