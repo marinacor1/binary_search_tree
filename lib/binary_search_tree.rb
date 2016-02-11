@@ -153,13 +153,9 @@ class BinarySearchTree
    elsif no_childs(node)
      @children
    elsif node.right_link
-     right_link_search(node)
-      @children += 1
-      children_nodes(node.right_link)
+     child_right(node)
    else
-     left_link_search(node)
-      @children += 1
-      children_nodes(node.left_link)
+     child_left(node)
    end
     maximum_child
    end
@@ -171,6 +167,19 @@ class BinarySearchTree
       @children + 1
     end
   end
+
+  def child_right(node)
+    right_link_search(node)
+    @children += 1
+    children_nodes(node.right_link)
+  end
+
+  def child_left(node)
+    left_link_search(node)
+    @children += 1
+    children_nodes(node.left_link)
+  end
+
   def right_link_search(node = @root_node)
    all.map {|element| element.right_link }
   end
