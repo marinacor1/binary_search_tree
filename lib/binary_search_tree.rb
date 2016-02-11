@@ -187,7 +187,6 @@ class BinarySearchTree
   def all(node = @root_node)
     exceptions(node)
     tree_initial_check(node)
-    total_elements(tree.uniq)
   end
 
   def tree_initial_check(node)
@@ -213,9 +212,7 @@ class BinarySearchTree
   end
 
   def total_elements(tree)
-      tree_array = tree.to_s.split(",")
-      nodes = tree_array.find_all {|node_elements| node_elements.include?("Node")}
-      nodes.count
+      tree.sort.count
   end
 
   def health(depth, node = @root_node)

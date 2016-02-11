@@ -554,6 +554,7 @@ meta pizza: true
   end
 meta sista: true
   def test_health_gives_information_for_two_node_tree
+    skip 
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     tree.insert(19, "Sisterhood of the Travel")
@@ -607,11 +608,11 @@ meta child: true
     tree.insert(98, "Animals United")
     assert_equal [[98, 1]], tree.health(0)
   end
-
+meta inform: true
   def test_all_returns_all_information
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
-    assert_equal 1, tree.all
+    assert_equal 1, tree.total_elements(tree)
   end
 meta all: true
   def test_all_returns_all_information_for_large_tree
@@ -623,7 +624,7 @@ meta all: true
     tree.insert(86, "Charlie's Angels")
     tree.insert(38, "Charlie's Country")
     tree.insert(69, "Collateral Damage")
-    assert_equal 7, tree.all
+    assert_equal 7, tree.total_elements(tree)
 end
 meta mega_health: true
   def test_health_gives_accurate_report_for_tree
