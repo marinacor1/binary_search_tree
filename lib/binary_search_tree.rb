@@ -136,23 +136,34 @@ class BinarySearchTree
     sorted_array.uniq
   end
 
-  def health(depth)
-    stats = []
-    stats << [score(depth), children_nodes, percent_children]
+  def health(depth, node = @root_node)
+    if node.nil?
+      []
+    elsif depth == node.depth
+     [[node.score]]
+    else
+      health(depth, node.left_link) + health(depth, node.right_link)
+    end
+
   end
 
   def score(depth, node = @root_node)
-    if @root_node.nil?
-      node = @root_node
-    end
-    if depth == node.depth
-      node.score #is this going to come up?
-    elsif depth < node.depth
-      node.score = nil
-    else depth > node.depth
-      score(depth, node.right_link)
-      score(depth, node.left.link) #where do these go?
-    end
+    scored_array = []
+    # if @root_node.nil?
+    #   node = @root_node
+    # end
+
+       #is this going to come up?
+
+    # elsif depth > node.depth && node.right_link.nil?
+    #   node.score
+    # elsif depth > node.depth && node.left_link.nil?
+    #   node.score
+    # elsif depth > node.depth && node.left_link
+    # scored_array <<  score(depth, node.left.link)
+    # else
+    # scored_array <<  score(depth, node.right_link)
+    # end
   end
 
   def children_nodes

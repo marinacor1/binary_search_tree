@@ -527,22 +527,70 @@ meta arma: true
 end
 
 class HealthTest < Minitest::Test
-  meta none: true 
+  meta none: true
   def test_health_returns_nil_for_non_existant_depth
+    skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     assert_equal [[]], tree.health(2)
   end
 
   def test_gives_nil_if_empty_tree
+    skip
     tree = BinarySearchTree.new
     assert_equal [[]], tree.health(2)
   end
-meta health: true
+meta mystic: true
+  def test_gives_score_information_for_one_node_tree
+    tree = BinarySearchTree.new
+    tree.insert(8, "Mystic Pizza")
+    assert_equal 8, tree.health(0)[0][0]
+  end
+
   def test_gives_information_for_one_node_tree
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
-    assert_equal [[8, 0, 100]], tree.health(0)
+    assert_equal [[8]], tree.health(0)
+  end
+meta wowww: true
+  def test_score_is_returned_for_two_node_tree
+    skip
+    tree = BinarySearchTree.new
+    tree.insert(98, "Animals United")
+    tree.insert(58, "Armageddon")
+    tree.insert(48, "Armadon")
+    tree.insert(19, "Sisterhood of the Travel")
+    tree.insert(9, "Ski School")
+    assert_equal 9, tree.health(4)[0][0]
+  end
+
+meta wcww: true
+  def test_score_is_returned_for_left_right_tree
+    tree = BinarySearchTree.new
+    tree.insert(98, "Animals United")
+    tree.insert(38, "Armageddon")
+    tree.insert(48, "Armadon")
+    tree.insert(19, "Sisterhood of the Travel")
+    tree.insert(9, "Ski School")
+    assert_equal [[9]], tree.health(3)
+  end
+meta ar: true
+  def test_score_is_returned_for_two_node_tree
+    tree = BinarySearchTree.new
+    tree.insert(98, "Animals United")
+    tree.insert(58, "Armageddon")
+    tree.insert(48, "Armadon")
+    assert_equal 48, tree.health(2)[0][0]
+  end
+
+meta lylas: true
+  def test_score_is_returned_for_two_node_tree_to_right
+    tree = BinarySearchTree.new
+    tree.insert(98, "Animals United")
+    tree.insert(108, "Armageddon")
+    tree.insert(120, "Armagdon")
+    tree.insert(12, "Argdon")
+    assert_equal [[12], [108]], tree.health(1)
   end
 
 meta mega_health: true
