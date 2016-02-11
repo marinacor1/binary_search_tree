@@ -155,6 +155,10 @@ class BinarySearchTree
         end
       end
       @sorted_array << get_data(node)
+
+      if node.right_link
+        sort(node.right_link)
+      end
     end
     @sorted_array.uniq
   end

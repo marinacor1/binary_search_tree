@@ -489,10 +489,9 @@ meta break: true
     {"Hannibal Buress: Animal Furnace" =>61}, {"Sharknado 3" =>92}]
     assert_equal sorted_array, tree.sort
   end
-
+meta megamega: true
 
   def test_sort_returns_array_with_long_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(90, "Breakfast Club")
     tree.insert(8, "Mystic Pizza")
@@ -531,16 +530,15 @@ end
 class HealthTest < Minitest::Test
   meta none: true
   def test_health_returns_nil_for_non_existant_depth
-    skip
+    # skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
-    assert_equal [[]], tree.health(2)
+    assert_equal [], tree.health(2)
   end
 
   def test_gives_nil_if_empty_tree
-    skip
     tree = BinarySearchTree.new
-    assert_equal [[]], tree.health(2)
+    assert_equal [], tree.health(2)
   end
 meta mystic: true
   def test_gives_score_information_for_one_node_tree
@@ -556,7 +554,6 @@ meta mystic: true
   end
 meta wowww: true
   def test_score_is_returned_for_two_node_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
@@ -568,7 +565,6 @@ meta wowww: true
 
 meta wcww: true
   def test_score_is_returned_for_left_right_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(38, "Armageddon")
