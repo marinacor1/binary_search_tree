@@ -606,14 +606,12 @@ meta child: true
   end
 meta inform: true
   def test_all_returns_all_information
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     assert_equal 1, tree.total_elements
   end
 meta all: true
   def test_all_returns_all_information_for_large_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
@@ -626,7 +624,6 @@ meta all: true
 end
 meta mega_health: true
   def test_health_gives_accurate_report_for_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
