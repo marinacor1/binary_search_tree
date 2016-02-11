@@ -2,7 +2,7 @@ require 'pry'
 require_relative 'node'
 
 class BinarySearchTree
-  attr_accessor :root_node, :max_node, :sorted_array, :movie_collection
+  attr_accessor :root_node, :max_node, :sorted_array, :movie_collection, :previous_depth
 
   def initialize
     @root_node = root_node
@@ -13,10 +13,8 @@ class BinarySearchTree
   end
 
   def insert(score, movie, node = @root_node)
-    if node == @root_node
-      @previous_depth = 0
-    end
     movie_collection_information(score, movie)
+    base_depth(node)
     current_node = Node.new(score, movie)
     if node.nil?
       @root_node = Node.new(score, movie)
@@ -39,6 +37,12 @@ class BinarySearchTree
       node.right_link = current_node
     end
     @previous_depth
+  end
+
+  def base_depth(node)
+    if node == @root_node
+      @previous_depth = 0
+    end
   end
 
   def include?(value, node = @root_node)
