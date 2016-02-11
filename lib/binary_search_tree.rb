@@ -2,13 +2,14 @@ require 'pry'
 require_relative 'node'
 
 class BinarySearchTree
-  attr_accessor :root_node, :max_node, :sorted_array, :movie_collection, :previous_depth
+  attr_accessor :root_node, :max_node, :sorted_array, :movie_collection, :previous_depth, :tree
 
   def initialize
     @root_node = root_node
     @max_node = 0
     @min_node = 100
     @sorted_array = []
+    @tree = []
   end
 
   def insert(score, movie, node = @root_node)
@@ -184,21 +185,27 @@ class BinarySearchTree
   end
 
   def all(node = @root_node)
-    tree = []
     exceptions(node)
+    tree_initial_check(node)
+    total_elements(tree.uniq)
+  end
+
+  def tree_initial_check(node)
     if node.nil?
-      tree
+      @tree
     else
-      if node.left_link
-        sort(node.left_link)
-      elsif
-        tree << node
-        right_check(node)
-      end
-      tree << node
+      tree_link_check(node)
+      @tree << node
       right_check(node)
     end
-    total_elements(tree.uniq)
+  end
+  def tree_link_check(node)
+    if node.left_link
+      sort(node.left_link)
+    elsif
+      @tree << node
+      right_check(node)
+    end
   end
 
   def total_elements(tree)
