@@ -39,6 +39,13 @@ class BinarySearchTree
     @previous_depth
   end
 
+  def movie_collection_information(score, movie)
+    movie_info = {}
+    movie_collection = []
+    movie_info[movie] = score
+    movie_collection << movie_info
+  end
+
   def base_depth(node)
     if node == @root_node
       @previous_depth = 0
@@ -70,8 +77,6 @@ class BinarySearchTree
     else include?(value, node.right_link)
     end
   end
-
-
 
   def depth_of(score, node = @root_node)
     if node.nil?
@@ -130,13 +135,6 @@ class BinarySearchTree
       end
      movies.length
     end
-  end
-
-  def movie_collection_information(score, movie)
-    movie_info = {}
-    movie_collection = []
-    movie_info[movie] = score
-    movie_collection << movie_info
   end
 
   def sort(node = @root_node)
