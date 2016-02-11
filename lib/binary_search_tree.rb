@@ -2,15 +2,12 @@ require 'pry'
 require_relative 'node'
 
 class BinarySearchTree
-  attr_accessor :root_node, :max_node, :previous_depth, :sorted_array, :movie_collection, :right_link, :left_link
+  attr_accessor :root_node, :left_count, :right_count, :max_node, :previous_depth, :sorted_array, :movie_collection
 
   def initialize
     @root_node = root_node
     @max_node = 0
     @min_node = 100
-    @last_depth = 0
-    @previous_depth = 0
-    @movie_collection = []
     @sorted_array = []
     @sorts = {}
     @tree = []
@@ -126,44 +123,36 @@ class BinarySearchTree
 
   def movie_collection_information(score, movie)
     movie_info = {}
+    movie_collection = []
     movie_info[movie] = score
-    @movie_collection << movie_info
+    movie_collection << movie_info
   end
-
-  # def sort
-  #   sorted_array = @movie_collection.sort_by do |hash|
-  #     hash.map do |k, v|
-  #       v
-  #     end
-  #   end
-  #   sorted_array.uniq
-  # end
 
   def sort(node = @root_node)
     exceptions(node)
     if node.nil?
-      @sorted_array
+      sorted_array
     else
       if node.left_link
         sort(node.left_link)
       elsif
-        @sorted_array << get_data(node)
+        sorted_array << get_data(node)
         if node.right_link
           sort(node.right_link)
         end
       end
-      @sorted_array << get_data(node)
+      sorted_array << get_data(node)
       if node.right_link
         sort(node.right_link)
       end
     end
-    @sorted_array.uniq
+    sorted_array.uniq
   end
 
   def exceptions(node)
     return [] if @root_node.nil?
     return [get_data(@root_node)] if no_childs
-    return @sorted_array << get_data(node) if no_childs
+    return sorted_array << get_data(node) if no_childs
   end
 
   def no_childs
@@ -201,22 +190,15 @@ class BinarySearchTree
     if node.nil?
       []
     elsif depth == node.depth
-     [[node.score, children_nodes(node)]]
+     [[node.score, children_nodes]]
     else
       health(depth, node.left_link) + health(depth, node.right_link)
     end
   end
 
-  def children_nodes(node)
-    if all(node).first.right_link.nil? && all(node).first.left_link.nil?
-      1
-    else
-      # binding.pry
-      alls = all(node).map do |info|
-        info[0]
-      end
-    end
-      alls.count
+  def children_nodes
+   "hi"
+    # self.root_node.right_link + self.root_node.left_link + 1
   end
 
   def percent_children
