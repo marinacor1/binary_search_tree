@@ -541,6 +541,7 @@ class HealthTest < Minitest::Test
   end
 meta mystic: true
   def test_health_gives_score_information_for_one_node_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     assert_equal 8, tree.health(0)[0][0]
@@ -548,20 +549,22 @@ meta mystic: true
 
 meta pizza: true
   def test_health_gives_information_for_one_node_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     assert_equal [[8, 1]], tree.health(0)
   end
 meta sista: true
   def test_health_gives_information_for_two_node_tree
-    skip 
+    skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     tree.insert(19, "Sisterhood of the Travel")
     assert_equal [[8, 2]], tree.health(0)
   end
 meta wowww: true
-  def test_score_is_returned_for_two_node_tree
+  def test_score_is_returned_for_multi_node_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
@@ -584,6 +587,7 @@ meta wcww: true
   end
 meta ar: true
   def test_score_is_returned_for_two_node_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")

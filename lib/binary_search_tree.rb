@@ -1,7 +1,10 @@
 require 'pry'
 require_relative 'node'
+require_relative 'recursions'
 
 class BinarySearchTree
+  include Recursions
+
   attr_accessor :root_node, :max_node, :sorted_array, :movie_collection, :previous_depth, :tree
 
   def initialize
@@ -145,8 +148,8 @@ class BinarySearchTree
 
   def exceptions(node)
     return [] if @root_node.nil?
-    return [get_data(@root_node)] if no_childs
-    return sorted_array << get_data(node) if no_childs
+    return [get_data(@root_node)] if no_childs(@root_node)
+    return sorted_array << get_data(node) if no_childs(@root_node)
   end
 
   def sort_check(node)
@@ -174,8 +177,8 @@ class BinarySearchTree
     end
   end
 
-  def no_childs
-    @root_node.left_link.nil? && @root_node.right_link.nil?
+  def no_childs(node = @root_node)
+    node.left_link.nil? && node.right_link.nil?
   end
 
   def get_data(node)
@@ -187,6 +190,7 @@ class BinarySearchTree
   def all(node = @root_node)
     exceptions(node)
     tree_initial_check(node)
+    tree.uniq
   end
 
   def tree_initial_check(node)
@@ -226,7 +230,14 @@ class BinarySearchTree
   end
 
   def children_nodes
-   all
+  #  all
+   if all.nil?
+     nil
+   elsif no_childs(all)
+     1
+   else
+   end
+
   end
 
   def percent_children
