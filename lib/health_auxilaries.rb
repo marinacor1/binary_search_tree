@@ -13,16 +13,6 @@ module Health
     self.sort.count
   end
 
-  def health(depth, node = @root_node)
-    if node.nil?
-      []
-    elsif depth == node.depth
-     [[node.score, children_nodes(node), percent_children(node).to_i]]
-    else
-      health(depth, node.left_link) + health(depth, node.right_link)
-    end
-  end
-
   def children_nodes(node)
     child_check(node)
     maximum_child

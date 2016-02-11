@@ -1,7 +1,7 @@
 require 'pry'
 require_relative 'node'
 require_relative 'recursions'
-require_relative 'health'
+require_relative 'health_auxilaries'
 
 class BinarySearchTree
   include Recursions
@@ -90,6 +90,16 @@ class BinarySearchTree
     exceptions(node)
     sort_check(node)
     sorted_array.uniq
+  end
+
+  def health(depth, node = @root_node)
+    if node.nil?
+      []
+    elsif depth == node.depth
+     [[node.score, children_nodes(node), percent_children(node).to_i]]
+    else
+      health(depth, node.left_link) + health(depth, node.right_link)
+    end
   end
 
 end
