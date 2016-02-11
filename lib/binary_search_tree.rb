@@ -1,6 +1,7 @@
 require 'pry'
 require_relative 'node'
 require_relative 'recursions'
+require_relative 'health'
 
 class BinarySearchTree
   include Recursions
