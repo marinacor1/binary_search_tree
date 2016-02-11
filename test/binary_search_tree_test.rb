@@ -541,7 +541,6 @@ class HealthTest < Minitest::Test
   end
 meta mystic: true
   def test_health_gives_score_information_for_one_node_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     assert_equal 8, tree.health(0)[0][0]
@@ -549,10 +548,9 @@ meta mystic: true
 
 meta pizza: true
   def test_health_gives_information_for_one_node_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
-    assert_equal [[8, 1]], tree.health(0)
+    assert_equal [[8, 1, 100]], tree.health(0)
   end
 meta sista: true
   def test_health_gives_information_for_two_node_tree

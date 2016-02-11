@@ -173,7 +173,7 @@ class BinarySearchTree
    end
 
   def percent_children(node)
-    children_nodes(node)/ total_elements
+    children_nodes(node)/ total_elements * 100
   end
 
   def total_nodes(node = @root_node)
