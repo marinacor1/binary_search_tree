@@ -591,20 +591,18 @@ meta ar: true
 
 meta lylas: true
   def test_score_is_returned_for_two_node_tree_to_right
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(108, "Armageddon")
     tree.insert(120, "Armagdon")
     tree.insert(12, "Argdon")
-    assert_equal [[12, 1], [108, 2]], tree.health(1)
+    assert_equal [[12, 1, 25], [108, 2, 75]], tree.health(1)
   end
 meta child: true
   def test_health_returns_correct_score_and_child_num
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
-    assert_equal [[98, 1]], tree.health(0)
+    assert_equal [[98, 1, 100]], tree.health(0)
   end
 meta inform: true
   def test_all_returns_all_information

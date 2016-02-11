@@ -161,7 +161,11 @@ class BinarySearchTree
       @children += 1
       children_nodes(node.left_link)
    end
-     @children + 1
+     if @children == total_elements
+       @children
+     else
+       @children + 1
+     end
    end
 
    def right_link_search(node = @root_node)
