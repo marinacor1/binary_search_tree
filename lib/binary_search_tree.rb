@@ -13,6 +13,7 @@ class BinarySearchTree
     @min_node = 100
     @sorted_array = []
     @tree = []
+    @children = 0
   end
 
   def insert(score, movie, node = @root_node)
@@ -49,12 +50,6 @@ class BinarySearchTree
     movie_collection << movie_info
   end
 
-  def base_depth(node)
-    if node == @root_node
-      @previous_depth = 0
-    end
-  end
-
   def include?(value, node = @root_node)
     if node.nil?
       false
@@ -64,20 +59,6 @@ class BinarySearchTree
       less_value(value, node)
     else
       greater_value(value, node)
-    end
-  end
-
-  def less_value(value, node)
-    if node.left_link.nil?
-      false
-    else include?(value, node.left_link)
-    end
-  end
-
-  def greater_value(value ,node)
-    if node.right_link.nil?
-      false
-    else include?(value, node.right_link)
     end
   end
 
@@ -146,73 +127,10 @@ class BinarySearchTree
     sorted_array.uniq
   end
 
-  def exceptions(node)
-    return [] if @root_node.nil?
-    return [get_data(@root_node)] if no_childs(@root_node)
-    return sorted_array << get_data(node) if no_childs(@root_node)
-  end
-
-  def sort_check(node)
-    if node.nil?
-      sorted_array
-    else
-      link_check(node)
-      sorted_array << get_data(node)
-      right_check(node)
-    end
-  end
-
-  def link_check(node)
-    if node.left_link
-      sort(node.left_link)
-    elsif
-      sorted_array << get_data(node)
-      right_check(node)
-    end
-  end
-
-  def right_check(node)
-    if node.right_link
-      sort(node.right_link)
-    end
-  end
-
-  def no_childs(node = @root_node)
-    node.left_link.nil? && node.right_link.nil?
-  end
-
-  def get_data(node)
-    sorts = {}
-    sorts[node.movie] = node.score
-    sorts
-  end
-
   def all(node = @root_node)
     exceptions(node)
     tree_initial_check(node)
     tree.uniq
-  end
-
-  def tree_initial_check(node)
-    if node.nil?
-      @tree
-    else
-      tree_search(node)
-    end
-  end
-
-  def tree_search(node)
-    tree_link_check(node)
-    @tree << node
-    right_check(node)
-  end
-  def tree_link_check(node)
-    if node.left_link
-      sort(node.left_link)
-    elsif
-      @tree << node
-      right_check(node)
-    end
   end
 
   def total_elements(tree)
@@ -223,22 +141,37 @@ class BinarySearchTree
     if node.nil?
       []
     elsif depth == node.depth
-     [[node.score, children_nodes]]
+     [[node.score, children_nodes(node)]]
     else
       health(depth, node.left_link) + health(depth, node.right_link)
     end
   end
 
-  def children_nodes
-  #  all
+  def children_nodes(node)
+    binding.pry
    if all.nil?
-     nil
-   elsif no_childs(all)
-     1
+     @children = nil
+   elsif no_childs
+     @children += 1
+   elsif node.right_link
+     right_link_search(node)
+      @children += 1
+      children_nodes(node.right_link)
    else
+     left_link_search(node)
+      @children += 1
+      children_nodes(node.left_link)
+   end
+     @children
    end
 
-  end
+   def right_link_search(node = @root_node)
+     all.map {|element| element.right_link }
+   end
+
+   def left_link_search(node = @root_node)
+     all.map {|element| element.left_link }
+   end
 
   def percent_children
     total =

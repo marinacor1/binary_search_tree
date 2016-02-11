@@ -549,14 +549,12 @@ meta mystic: true
 
 meta pizza: true
   def test_health_gives_information_for_one_node_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     assert_equal [[8, 1]], tree.health(0)
   end
 meta sista: true
   def test_health_gives_information_for_two_node_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
     tree.insert(19, "Sisterhood of the Travel")
