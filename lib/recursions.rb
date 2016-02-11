@@ -20,6 +20,30 @@ module Recursions
     @min_movie = node.movie
   end
 
+  def max_recursion(node)
+    if node.nil?
+      nil
+    elsif node.score < @max_node
+      @max_node
+    elsif node.score > @max_node && node.right_link
+      max_continued(node)
+    else node.score > @max_node && node.right_link.nil?
+      max_switch(node)
+    end
+  end
+
+  def min_recursion(node)
+    if node.nil?
+      nil
+    elsif node.score > @min_node
+      @min_node
+    elsif node.score < @min_node && node.left_link
+      min_continued(node)
+    else node.score < @min_node && node.left_link.nil?
+      min_switch(node)
+    end
+  end
+
   def base_depth(node)
     if node == @root_node
       @previous_depth = 0

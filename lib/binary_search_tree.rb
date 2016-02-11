@@ -76,30 +76,14 @@ class BinarySearchTree
 
   def max(node = @root_node)
     maximum = {}
-    if node.nil?
-      nil
-    elsif node.score < @max_node
-      @max_node
-    elsif node.score > @max_node && node.right_link
-      max_continued(node)
-    else node.score > @max_node && node.right_link.nil?
-      max_switch(node)
-    end
+    max_recursion(node)
     maximum[@max_movie] = @max_node
     maximum
   end
 
   def min(node = @root_node)
     minimum = {}
-    if node.nil?
-      nil
-    elsif node.score > @min_node
-      @min_node
-    elsif node.score < @min_node && node.left_link
-      min_continued(node)
-    else node.score < @min_node && node.left_link.nil?
-      min_switch(node)
-    end
+    min_recursion(node)
     minimum[@min_movie] = @min_node
     minimum
   end
