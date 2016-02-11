@@ -35,8 +35,4 @@ module Recursions
     children_nodes(node.left_link)
   end
 
-
-
-
-
 end

@@ -608,6 +608,7 @@ class HealthTest < Minitest::Test
 end
 meta a: true
   def test_health_gives_accurate_report_for_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
