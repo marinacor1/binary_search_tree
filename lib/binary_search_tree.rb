@@ -7,7 +7,7 @@ class BinarySearchTree
   include Recursions
   include Health
 
-  attr_accessor :root_node, :max_node, :sorted_array, :movie_collection, :previous_depth, :tree
+  attr_accessor :root_node, :max_node, :sorted_array, :previous_depth, :tree
 
   def initialize
     @max_node = 0
