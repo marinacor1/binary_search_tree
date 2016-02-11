@@ -562,7 +562,6 @@ meta sista: true
   end
 meta wowww: true
   def test_score_is_returned_for_multi_node_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
@@ -574,18 +573,16 @@ meta wowww: true
 
 meta wcww: true
   def test_score_is_returned_for_left_right_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(38, "Armageddon")
     tree.insert(48, "Armadon")
     tree.insert(19, "Sisterhood of the Travel")
     tree.insert(9, "Ski School")
-    assert_equal [[9, 3]], tree.health(3)
+    assert_equal [[9, 1]], tree.health(3)
   end
 meta ar: true
   def test_score_is_returned_for_two_node_tree
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(58, "Armageddon")
@@ -595,13 +592,12 @@ meta ar: true
 
 meta lylas: true
   def test_score_is_returned_for_two_node_tree_to_right
-    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(108, "Armageddon")
     tree.insert(120, "Armagdon")
     tree.insert(12, "Argdon")
-    assert_equal [[12, 3], [108, 3]], tree.health(1)
+    assert_equal [[12, 1], [108, 2]], tree.health(1)
   end
 meta child: true
   def test_health_returns_correct_score_and_child_num

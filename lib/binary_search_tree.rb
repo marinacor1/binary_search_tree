@@ -148,11 +148,10 @@ class BinarySearchTree
   end
 
   def children_nodes(node)
-    binding.pry
    if all.nil?
      @children = nil
-   elsif no_childs
-     @children += 1
+   elsif no_childs(node)
+     @children
    elsif node.right_link
      right_link_search(node)
       @children += 1
@@ -162,7 +161,7 @@ class BinarySearchTree
       @children += 1
       children_nodes(node.left_link)
    end
-     @children
+     @children + 1
    end
 
    def right_link_search(node = @root_node)
