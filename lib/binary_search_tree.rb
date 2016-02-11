@@ -32,10 +32,8 @@ class BinarySearchTree
   end
 
   def include?(value, node = @root_node)
-    if node.nil?
-      false
-    elsif value == node.score
-      true
+    if node.nil? ;  false
+    elsif value == node.score ;  true
     elsif value < node.score
       less_value(value, node)
     else
@@ -44,8 +42,7 @@ class BinarySearchTree
   end
 
   def depth_of(score, node = @root_node)
-    if node.nil?
-      nil
+    if node.nil? ; nil
     elsif node.score == score
       node.depth
     elsif score < node.score && node.left_link
@@ -93,8 +90,7 @@ class BinarySearchTree
   end
 
   def health(depth, node = @root_node)
-    if node.nil?
-      []
+    if node.nil?;  []
     elsif depth == node.depth
      [[node.score, children_nodes(node), percent_children(node).to_i]]
     else

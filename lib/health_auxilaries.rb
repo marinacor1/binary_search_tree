@@ -14,6 +14,7 @@ module Health
   end
 
   def children_nodes(node)
+    exceptions(node)
     child_check(node)
     maximum_child
    end

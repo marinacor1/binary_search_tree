@@ -93,6 +93,17 @@ module Recursions
     return sorted_array << get_data(node) if no_childs(@root_node)
   end
 
+  def child_check(node)
+    if self.nil?
+      @children = nil
+    elsif no_childs(node)
+      @children
+    elsif node.right_link
+      child_right(node)
+    else
+      child_left(node)
+    end
+  end
 
   def sort_check(node)
     if node.nil?
@@ -149,18 +160,6 @@ module Recursions
     elsif
       @tree << node
       right_check(node)
-    end
-  end
-
-  def child_check(node)
-    if all.nil?
-      @children = nil
-    elsif no_childs(node)
-      @children
-    elsif node.right_link
-      child_right(node)
-    else
-      child_left(node)
     end
   end
 

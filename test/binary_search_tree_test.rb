@@ -606,7 +606,7 @@ class HealthTest < Minitest::Test
     tree.insert(69, "Collateral Damage")
     assert_equal 7, tree.total_elements
 end
-
+meta a: true
   def test_health_gives_accurate_report_for_tree
     skip
     tree = BinarySearchTree.new
