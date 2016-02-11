@@ -5,6 +5,7 @@ require_relative 'health'
 
 class BinarySearchTree
   include Recursions
+  include Health
 
   attr_accessor :root_node, :max_node, :sorted_array, :movie_collection, :previous_depth, :tree
 
@@ -12,8 +13,8 @@ class BinarySearchTree
     @max_node = 0
     @min_node = 100
     @sorted_array = []
-    @tree = []
     @children = 0
+    @tree = []
   end
 
   def insert(score, movie, node = @root_node)
@@ -89,47 +90,6 @@ class BinarySearchTree
     exceptions(node)
     sort_check(node)
     sorted_array.uniq
-  end
-
-  def all(node = @root_node)
-    exceptions(node)
-    tree_initial_check(node)
-    tree.uniq
-  end
-
-  def total_elements
-    self.sort.count
-  end
-
-  def health(depth, node = @root_node)
-    if node.nil?
-      []
-    elsif depth == node.depth
-     [[node.score, children_nodes(node), percent_children(node).to_i]]
-    else
-      health(depth, node.left_link) + health(depth, node.right_link)
-    end
-  end
-
-  def children_nodes(node)
-    child_check(node)
-    maximum_child
-   end
-
-  def right_link_search(node = @root_node)
-   all.map {|element| element.right_link }
-  end
-
-  def left_link_search(node = @root_node)
-    all.map {|element| element.left_link }
-  end
-
-  def percent_children(node)
-    (children_nodes(node).to_f/ total_elements) * 100
-  end
-
-  def total_nodes(node = @root_node)
-    node.count
   end
 
 end
