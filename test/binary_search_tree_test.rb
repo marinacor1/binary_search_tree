@@ -460,7 +460,6 @@ meta pink: true
     tree.insert(90, "Breakfast Club")
     tree.insert(91, "Pretty in Pink")
     array = [{"Breakfast Club" => 90}, {"Pretty in Pink" => 91}]
-    binding.pry
     assert_equal array, tree.sort
   end
 meta break: true
@@ -482,7 +481,6 @@ meta break: true
   end
 
   def test_sort_returns_array_of_data_in_ascending_order
-    skip
     tree = BinarySearchTree.new
     tree.insert(16, "Johnny English")
     tree.insert(92, "Sharknado 3")

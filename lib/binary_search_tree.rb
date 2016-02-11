@@ -138,26 +138,26 @@ class BinarySearchTree
   #   sorted_array.uniq
   # end
 
-    def sort(node = @root_node)
-      return [] if @root_node.nil?
-      return [get_data(@root_node)] if @root_node.left_link.nil? && @root_node.right_link.nil?
-      return if node.left_link.nil? && node.right_link.nil?
-      if node.nil?
-        @sorted_array
-      else
-        if node.left_link
-          @sorted_array << get_data(node.left_link)
-          sort(node.left_link)
-        elsif node.right_link
-          @sorted_array << get_data(node.right_link)
+  def sort(node = @root_node)
+    return [] if @root_node.nil?
+    return [get_data(@root_node)] if @root_node.left_link.nil? && @root_node.right_link.nil?
+    return @sorted_array << get_data(node) if node.left_link.nil? && node.right_link.nil?
+
+    if node.nil?
+      @sorted_array
+    else
+      if node.left_link
+        sort(node.left_link)
+      elsif
+        @sorted_array << get_data(node)
+        if node.right_link
           sort(node.right_link)
-        else
-          #go back and run sort for previous node
         end
-          @sorted_array << get_data(node)
       end
-      @sorted_array.uniq
+      @sorted_array << get_data(node)
     end
+    @sorted_array.uniq
+  end
 
   def get_data(node)
     sorts = {}
