@@ -446,6 +446,7 @@ class SortedArrayTest < Minitest::Test
     empty_array = []
     assert_equal empty_array, tree.sort
   end
+
 meta sort: true
   def test_sort_returns_correct_array_for_single_tree
     tree = BinarySearchTree.new
@@ -453,15 +454,16 @@ meta sort: true
     array = [{"Say Anything" => 92}]
     assert_equal array, tree.sort
   end
-
+meta pink: true
   def test_sort_returns_correct_array_for_two_node_tree
     tree = BinarySearchTree.new
     tree.insert(90, "Breakfast Club")
     tree.insert(91, "Pretty in Pink")
     array = [{"Breakfast Club" => 90}, {"Pretty in Pink" => 91}]
+    binding.pry
     assert_equal array, tree.sort
   end
-
+meta break: true
   def test_sort_returns_ascending_array_for_two_node_tree
     tree = BinarySearchTree.new
     tree.insert(90, "Breakfast Club")
@@ -480,6 +482,7 @@ meta sort: true
   end
 
   def test_sort_returns_array_of_data_in_ascending_order
+    skip
     tree = BinarySearchTree.new
     tree.insert(16, "Johnny English")
     tree.insert(92, "Sharknado 3")
@@ -491,6 +494,7 @@ meta sort: true
 
 
   def test_sort_returns_array_with_long_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(90, "Breakfast Club")
     tree.insert(8, "Mystic Pizza")
@@ -550,7 +554,7 @@ meta mystic: true
   def test_gives_information_for_one_node_tree
     tree = BinarySearchTree.new
     tree.insert(8, "Mystic Pizza")
-    assert_equal [[8]], tree.health(0)
+    assert_equal [[8, 1]], tree.health(0)
   end
 meta wowww: true
   def test_score_is_returned_for_two_node_tree
@@ -566,13 +570,14 @@ meta wowww: true
 
 meta wcww: true
   def test_score_is_returned_for_left_right_tree
+    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(38, "Armageddon")
     tree.insert(48, "Armadon")
     tree.insert(19, "Sisterhood of the Travel")
     tree.insert(9, "Ski School")
-    assert_equal [[9]], tree.health(3)
+    assert_equal [[9, 3]], tree.health(3)
   end
 meta ar: true
   def test_score_is_returned_for_two_node_tree
@@ -585,13 +590,26 @@ meta ar: true
 
 meta lylas: true
   def test_score_is_returned_for_two_node_tree_to_right
+    skip
     tree = BinarySearchTree.new
     tree.insert(98, "Animals United")
     tree.insert(108, "Armageddon")
     tree.insert(120, "Armagdon")
     tree.insert(12, "Argdon")
-    assert_equal [[12], [108]], tree.health(1)
+    assert_equal [[12, 3], [108, 3]], tree.health(1)
   end
+meta child: true
+  def test_health_returns_correct_score_and_child_num
+    tree = BinarySearchTree.new
+    tree.insert(98, "Animals United")
+    assert_equal [[98, 1]], tree.health(0)
+  end
+
+  # def test_all_returns_all_information
+  #   tree = BinarySearchTree.new
+  #   tree.insert(98, "Animals United")
+  #   assert_equal [[98, 1]], tree.all(0)
+  # end
 
 meta mega_health: true
   def test_health_gives_accurate_report_for_tree

@@ -2,7 +2,7 @@ require 'pry'
 require_relative 'node'
 
 class BinarySearchTree
-  attr_accessor :root_node, :left_count, :right_count, :max_node, :previous_depth
+  attr_accessor :root_node, :left_count, :right_count, :max_node, :previous_depth, :sorted_array
 
   def initialize
     @root_node = root_node
@@ -11,6 +11,8 @@ class BinarySearchTree
     @last_depth = 0
     @previous_depth = 0
     @movie_collection = []
+    @sorted_array = []
+    @sorts = {}
   end
 
   def insert(score, movie, node = @root_node)
@@ -127,51 +129,82 @@ class BinarySearchTree
     @movie_collection << movie_info
   end
 
-  def sort
-    sorted_array = @movie_collection.sort_by do |hash|
-      hash.map do |k, v|
-        v
+  # def sort
+  #   sorted_array = @movie_collection.sort_by do |hash|
+  #     hash.map do |k, v|
+  #       v
+  #     end
+  #   end
+  #   sorted_array.uniq
+  # end
+
+    def sort(node = @root_node)
+      return [] if @root_node.nil?
+      return [get_data(@root_node)] if @root_node.left_link.nil? && @root_node.right_link.nil?
+      return if node.left_link.nil? && node.right_link.nil?
+      if node.nil?
+        @sorted_array
+      else
+        if node.left_link
+          @sorted_array << get_data(node.left_link)
+          sort(node.left_link)
+        elsif node.right_link
+          @sorted_array << get_data(node.right_link)
+          sort(node.right_link)
+        else
+          #go back and run sort for previous node
+        end
+          @sorted_array << get_data(node)
       end
+      @sorted_array.uniq
     end
-    sorted_array.uniq
+
+  def get_data(node)
+    sorts = {}
+    sorts[node.movie] = node.score
+    sorts
   end
+
+  def all(node = @root_node)
+    if node.nil?
+      @sorted_array << node
+    else
+      sort(node.left_link)
+      @sorted_array << node
+      sort(node.right_link)
+      @sorted_array << node
+    end
+  end
+
+  # def sort
+  #   sorted_array = @movie_collection.map do |hash|
+  #     hash.map do |k, v|
+  #       v
+  #     end
+  #   end
+  #   sorted_array.uniq
+  # end
 
   def health(depth, node = @root_node)
     if node.nil?
       []
     elsif depth == node.depth
-     [[node.score]]
+     [[node.score, children_nodes]]
     else
       health(depth, node.left_link) + health(depth, node.right_link)
     end
-
-  end
-
-  def score(depth, node = @root_node)
-    scored_array = []
-    # if @root_node.nil?
-    #   node = @root_node
-    # end
-
-       #is this going to come up?
-
-    # elsif depth > node.depth && node.right_link.nil?
-    #   node.score
-    # elsif depth > node.depth && node.left_link.nil?
-    #   node.score
-    # elsif depth > node.depth && node.left_link
-    # scored_array <<  score(depth, node.left.link)
-    # else
-    # scored_array <<  score(depth, node.right_link)
-    # end
   end
 
   def children_nodes
-    self.sort.count - 1
+    @movie_collection.count
+    # binding.pry
+    # self.root_node.right_link + self.root_node.left_link + 1
   end
 
   def percent_children
-    fraction = self.sort.count/self.sort.count
+    total =
+    total = self.sort.count
+    fraction = self.sort.count/total
     fraction * 100
   end
 
